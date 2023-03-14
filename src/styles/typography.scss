@@ -1,0 +1,270 @@
+@import "./variables.module";
+
+@mixin display {
+  font-family: "Open Sans", sans-serif;
+  font-size: 8.6rem;
+  line-height: 9.6rem;
+  letter-spacing: -1.5px;
+}
+
+@mixin display-regular {
+  @include display;
+  font-weight: $weight-regular;
+}
+
+@mixin display-medium {
+  @include display;
+  font-weight: $weight-medium;
+}
+
+@mixin display-semi-bold {
+  @include display;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin heading-one {
+  font-family: "Open Sans", sans-serif;
+  font-size: 5.3rem;
+  line-height: 6.4rem;
+  letter-spacing: -0.5px;
+}
+
+@mixin heading-one-regular {
+  @include heading-one;
+  font-weight: $weight-regular;
+}
+
+@mixin heading-one-medium {
+  @include heading-one;
+  font-weight: $weight-medium;
+}
+
+@mixin heading-one-semi-bold {
+  @include heading-one;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin heading-two {
+  font-family: "Open Sans", sans-serif;
+  font-size: 4.3rem;
+  line-height: 5.6rem;
+  letter-spacing: 0px;
+}
+
+@mixin heading-two-regular {
+  @include heading-two;
+  font-weight: $weight-regular;
+}
+
+@mixin heading-two-medium {
+  @include heading-two;
+  font-weight: $weight-medium;
+}
+
+@mixin heading-two-semi-bold {
+  @include heading-two;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin heading-three {
+  font-family: "Open Sans", sans-serif;
+  font-size: 3rem;
+  line-height: 4rem;
+  letter-spacing: 0.25px;
+}
+
+@mixin heading-three-regular {
+  @include heading-three;
+  font-weight: $weight-regular;
+}
+
+@mixin heading-three-medium {
+  @include heading-three;
+  font-weight: $weight-medium;
+}
+
+@mixin heading-three-semi-bold {
+  @include heading-three;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin heading-four {
+  font-family: "Open Sans", sans-serif;
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  letter-spacing: 0px;
+}
+
+@mixin heading-four-medium {
+  @include heading-four;
+  font-weight: $weight-medium;
+}
+
+@mixin heading-four-semi-bold {
+  @include heading-four;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin heading-four-bold {
+  @include heading-four;
+  font-weight: $weight-bold;
+}
+
+@mixin subtitle-one {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.9rem;
+  line-height: 2.4rem;
+  letter-spacing: 0.2px;
+}
+
+@mixin subtitle-one-regular {
+  @include subtitle-one;
+  font-weight: $weight-regular;
+}
+
+@mixin subtitle-one-medium {
+  @include subtitle-one;
+  font-weight: $weight-medium;
+}
+
+@mixin subtitle-one-semi-bold {
+  @include subtitle-one;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin subtitle-two {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.7rem;
+  line-height: 2rem;
+  letter-spacing: 0.15px;
+}
+
+@mixin subtitle-two-regular {
+  @include subtitle-two;
+  font-weight: $weight-regular;
+}
+
+@mixin subtitle-two-medium {
+  @include subtitle-two;
+  font-weight: $weight-medium;
+}
+
+@mixin subtitle-two-semi-bold {
+  @include subtitle-two;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin body-one {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  letter-spacing: 0.5px;
+  margin: 1.2rem 0;
+}
+
+@mixin body-one-regular {
+  @include body-one;
+  font-weight: $weight-regular;
+}
+
+@mixin body-one-bold {
+  @include body-one;
+  font-weight: $weight-bold;
+}
+
+@mixin body-two {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.3px;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+@mixin body-two-regular {
+  @include body-two;
+  font-weight: $weight-regular;
+}
+
+@mixin body-two-bold {
+  @include body-two;
+  font-weight: $weight-bold;
+}
+
+@mixin button-one {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  letter-spacing: 1.25px;
+}
+
+@mixin button-one-semi-bold {
+  @include button-one;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin button-one-bold {
+  @include button-one;
+  font-weight: $weight-bold;
+}
+
+@mixin button-two {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  letter-spacing: 1px;
+}
+
+@mixin button-two-semi-bold {
+  @include button-two;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin button-two-bold {
+  @include button-two;
+  font-weight: $weight-bold;
+}
+
+@mixin overline {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  letter-spacing: 1.2px;
+}
+
+@mixin overline-regular {
+  @include overline;
+  font-weight: $weight-regular;
+}
+
+@mixin overline-medium {
+  @include overline;
+  font-weight: $weight-medium;
+}
+
+@mixin overline-semi-bold {
+  @include overline;
+  font-weight: $weight-semi-bold;
+}
+
+@mixin caption {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  letter-spacing: 0.4px;
+}
+
+@mixin caption-regular {
+  @include caption;
+  font-weight: $weight-regular;
+}
+
+@mixin caption-medium {
+  @include caption;
+  font-weight: $weight-medium;
+}
+
+@mixin caption-semi-bold {
+  @include caption;
+  font-weight: $weight-semi-bold;
+}

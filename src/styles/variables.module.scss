@@ -1,0 +1,37 @@
+$weight-regular: 400;
+$weight-medium: 500;
+$weight-semi-bold: 600;
+$weight-bold: 700;
+
+$color-primary: #2f4ce2;
+$color-primary-hover: #4040ff;
+$color-greyscale-white: #fff;
+$color-greyscale-grey: #d4d2d8;
+$color-greyscale-grey-light: #fbfbff;
+$color-greyscale-grey-light-mid: #f0f2f9;
+$color-greyscale-grey-dark: #25262f;
+$color-greyscale-grey-dark-mid: #6a6d81;
+$color-greyscale-black: #090615;
+
+// $width-tablet-landscape: 1024px; <= width defined from UI
+// $width-tablet-potrait: 768px; <= width defined from UI
+// $width-mobile-big: 414px; <= width defined from UI
+$width-desktop-max: 1512px;
+$width-desktop-xlarge: 1440px;
+$width-desktop-large: 1280px;
+$width-desktop: 1152px;
+$width-tablet-landscape: 1200px;
+$width-tablet-potrait: 800px;
+// since the UI mobile is only considering iphone X for the available UI,
+// i assume more devices might still be considered for future UIs, hence the name
+$width-mobile-big: 600px;
+
+$responsive-min-width: "MINIMUM WIDTH";
+$responsive-max-width: "MAXIMUM WIDTH";
+
+$responsive-min-height: "MINIMUM HEIGHT";
+$responsive-max-height: "MAXIMUM HEIGHT";
+
+:export {
+  colorPrimary: $color-primary;
+}

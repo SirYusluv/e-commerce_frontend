@@ -1,0 +1,27 @@
+@import "./variables.module";
+
+@mixin responsive($min-max, $break-point) {
+  @if ($min-max == $responsive-min-width) {
+    @media only screen and (min-width: $break-point) {
+      @content;
+    }
+  }
+
+  @if ($min-max == $responsive-max-width) {
+    @media only screen and (max-width: $break-point) {
+      @content;
+    }
+  }
+
+  @if ($min-max == $responsive-min-height) {
+    @media only screen and (min-height: $break-point) {
+      @content;
+    }
+  }
+
+  @if ($min-max == $responsive-max-height) {
+    @media only screen and (max-height: $break-point) {
+      @content;
+    }
+  }
+}
