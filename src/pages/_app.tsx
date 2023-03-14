@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content={variables.colorPrimary} />
+        <meta name="theme-color" content={variables.colorPrimaryMain} />
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Component {...pageProps} />

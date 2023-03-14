@@ -3,15 +3,16 @@ $weight-medium: 500;
 $weight-semi-bold: 600;
 $weight-bold: 700;
 
-$color-primary: #2f4ce2;
-$color-primary-hover: #4040ff;
+$color-primary-main: #004282;
+$color-primary-light: #416282;
+$color-primary-lighter: #828282;
+$color-primary-dark: #003366;
+$color-primary-darker: #202c45;
 $color-greyscale-white: #fff;
-$color-greyscale-grey: #d4d2d8;
-$color-greyscale-grey-light: #fbfbff;
-$color-greyscale-grey-light-mid: #f0f2f9;
-$color-greyscale-grey-dark: #25262f;
-$color-greyscale-grey-dark-mid: #6a6d81;
-$color-greyscale-black: #090615;
+$color-greyscale-black: #000;
+$color-greyscale-grey: #808080;
+$color-greyscale-light: #bfbfbf;
+$color-greyscale-dark: #404040;
 
 // $width-tablet-landscape: 1024px; <= width defined from UI
 // $width-tablet-potrait: 768px; <= width defined from UI
@@ -33,5 +34,5 @@ $responsive-min-height: "MINIMUM HEIGHT";
 $responsive-max-height: "MAXIMUM HEIGHT";
 
 :export {
-  colorPrimary: $color-primary;
+  colorPrimaryMain: $color-primary-main;
 }
