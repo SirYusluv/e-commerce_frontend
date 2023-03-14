@@ -20,12 +20,14 @@ $color-greyscale-dark: #404040;
 $width-desktop-max: 1512px;
 $width-desktop-xlarge: 1440px;
 $width-desktop-large: 1280px;
-$width-desktop: 1152px;
 $width-tablet-landscape: 1200px;
 $width-tablet-potrait: 800px;
 // since the UI mobile is only considering iphone X for the available UI,
 // i assume more devices might still be considered for future UIs, hence the name
 $width-mobile-big: 600px;
+$width-desktop: 1440px;
+$width-tablet: 834px;
+$width-mobile: 320px;
 
 $responsive-min-width: "MINIMUM WIDTH";
 $responsive-max-width: "MAXIMUM WIDTH";

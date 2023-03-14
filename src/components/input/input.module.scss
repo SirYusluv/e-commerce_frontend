@@ -1,4 +1,12 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/variables.module.scss";
+
 .input-box {
   width: 35.4rem;
   height: 5rem;
+  border: 2px solid $color-greyscale-black;
+  color: $color-greyscale-grey;
+  padding: 1.5rem;
+
+  @include body-one-regular;
 }
