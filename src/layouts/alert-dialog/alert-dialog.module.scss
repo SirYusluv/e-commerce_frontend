@@ -1,15 +1,19 @@
-@import "../../scss/base/variables";
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
 
 .alert {
-  background-color: $color-darkest;
+  background-color: $color-greyscale-dark;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  color: $color-greyscale-white;
+  @include body-one-regular;
 
   &__action {
     display: flex;
     gap: 3rem;
     justify-content: space-between;
+    @include button-one-bold;
   }
 }

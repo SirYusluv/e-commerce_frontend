@@ -1,3 +1,4 @@
+import Button from "@/components/button/button";
 import Backdrop from "../backdrop/backdrop";
 import Modal from "../modal/modal";
 import styles from "./alert-dialog.module.scss";
@@ -29,14 +30,18 @@ function AlertDialog({
         <p className="card-detail">{message}</p>
         <div className={styles["alert__action"]}>
           {buttonSec && (
-            <p onClick={onButtonSecClick} className="button button-sec">
-              {buttonSec}
-            </p>
+            <Button
+              type="secondary"
+              text={buttonSec}
+              buttonClickHandler={onButtonSecClick}
+            />
           )}
           {buttonPri && (
-            <p onClick={onButtonPriClick} className="button button-pri">
-              {buttonPri}
-            </p>
+            <Button
+              type="main"
+              text={buttonPri}
+              buttonClickHandler={onButtonPriClick}
+            />
           )}
         </div>
       </div>

@@ -4,3 +4,5 @@ export const PASSWORD_MIN_LENHT = 7;
 export const NAME_MIN_LENGTH = 1;
 export const NAME_MAX_LENGTH = 15;
 export const ADDRESS_MIN_LENGTH = 2;
+
+export const API_URL = "http://localhost:3000";
