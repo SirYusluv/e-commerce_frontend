@@ -1,0 +1,20 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/variables.module.scss";
+
+.button {
+  border-radius: 0.5rem;
+  &__main {
+    background-color: $color-primary-main;
+    width: 35.4rem;
+    height: 5rem;
+    color: $color-greyscale-white;
+    border: none;
+    @include button-one-bold;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 25.8rem;
+      height: 4rem;
+    }
+  }
+}

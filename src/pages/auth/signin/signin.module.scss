@@ -1,0 +1,54 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/variables.module.scss";
+
+.logo {
+  margin-left: 7.8rem;
+  margin-top: 3.2rem;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    margin-left: 5.1rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    margin-left: 1.8rem;
+    margin-top: 1.5rem;
+  }
+}
+
+.signin {
+  &__form-el {
+    display: flex;
+    gap: 3.8rem;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 6rem;
+  }
+
+  &__input {
+    display: block;
+  }
+}
+
+.bottom {
+  text-align: center;
+  margin-top: 3.8rem;
+  @include body-two-bold;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    @include body-two-regular;
+  }
+
+  &__account {
+    & span {
+      color: $color-primary-darker;
+      cursor: pointer;
+    }
+  }
+
+  &__password {
+    color: $color-primary-darker;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+}
