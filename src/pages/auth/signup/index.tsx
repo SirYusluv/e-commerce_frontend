@@ -24,25 +24,25 @@ export default function Signup() {
             extraClasses={styles["signup__input"]}
             text="First Name"
             inputType="text"
-            ref={firstNameRef}
+            inputRef={firstNameRef}
           />
           <Input
             extraClasses={styles["signup__input"]}
             text="Last Name"
             inputType="text"
-            ref={lastNameRef}
+            inputRef={lastNameRef}
           />
           <Input
             extraClasses={styles["signup__input"]}
             text="Email address"
             inputType="email"
-            ref={emailAddressRef}
+            inputRef={emailAddressRef}
           />
           <Input
             extraClasses={styles["signup__input"]}
             text="Password"
             inputType="password"
-            ref={passwordRef}
+            inputRef={passwordRef}
           />
           <Button type="main" text="Signup" />
         </form>

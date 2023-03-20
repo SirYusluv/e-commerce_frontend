@@ -4,6 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRef } from "react";
 import styles from "./forget-password.module.scss";
+import signupStyles from "../signup/signup.module.scss";
 import logo from "../../../assets/logo.svg";
 
 export default function ForgetPassword() {
@@ -14,20 +15,23 @@ export default function ForgetPassword() {
         <title>Signup</title>
       </Head>
       <main>
-        <Image src={logo} alt="app" className={styles.logo} />
-        <form className={styles["signup__form-el"]}>
+        <Image src={logo} alt="app" className={signupStyles.logo} />
+        <form className={styles["forget-password__form-el"]}>
           <Input
-            extraClasses={styles["signup__input"]}
+            extraClasses={styles["forget-password__input"]}
             text="Email address"
             inputType="email"
-            ref={emailAddressRef}
+            inputRef={emailAddressRef}
           />
 
           <Button type="main" text="Signup" />
         </form>
-        <p className={styles["bottom-text"]}>
-          Already have an account? <span> Signin</span>
+        <div className={styles.bottom}>
+        <p className={styles["bottom__signup"]}>
+          Don't have an account? <span> Signup</span>
         </p>
+        <p className={styles["bottom__signin"]}>Signin</p>
+        </div>
       </main>
     </>
   );

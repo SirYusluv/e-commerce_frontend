@@ -9,17 +9,22 @@ import styles from "./input.module.scss";
 interface IProps {
   text: string;
   inputType: HTMLInputTypeAttribute;
-  ref: LegacyRef<HTMLInputElement>;
+  inputRef: LegacyRef<HTMLInputElement>;
   extraClasses?: string;
 }
 
-export default function Input({ text, inputType, ref, extraClasses }: IProps) {
+export default function Input({
+  text,
+  inputType,
+  inputRef,
+  extraClasses,
+}: IProps) {
   return (
     <input
       className={`${styles["input-box"]} ${extraClasses}`}
       placeholder={text}
       type={inputType}
-      ref={ref}
+      ref={inputRef}
     />
   );
 }
