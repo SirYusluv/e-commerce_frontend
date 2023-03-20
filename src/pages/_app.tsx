@@ -2,6 +2,8 @@ import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import variables from "@/styles/variables.module.scss";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -12,7 +14,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content={variables.colorPrimaryMain} />
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <div id="modal"></div>
+        <div id="backdrop"></div>
+        <Component {...pageProps} />
+      </Provider>
     </>
   );
 }

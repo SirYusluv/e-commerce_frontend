@@ -12,6 +12,10 @@
     border: none;
     @include button-one-bold;
 
+    &--not-active {
+      background-color: $color-greyscale-light;
+    }
+
     @include responsive($responsive-max-width, $width-mobile) {
       width: 25.8rem;
       height: 4rem;

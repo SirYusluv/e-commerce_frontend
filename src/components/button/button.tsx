@@ -6,14 +6,23 @@ interface IProps {
   text: string;
   ref?: LegacyRef<HTMLButtonElement>;
   extraClasses?: string;
+  isActive?: boolean;
 }
 
-export default function Button({ type, text, extraClasses, ref }: IProps) {
+export default function Button({
+  type,
+  text,
+  extraClasses,
+  ref,
+  isActive = true,
+}: IProps) {
   switch (type) {
     case "main":
       return (
         <button
-          className={`${styles.button} ${styles["button__main"]} ${extraClasses}`}
+          className={`${styles.button} ${styles["button__main"]} ${
+            isActive ? "" : styles["button__main--not-active"]
+          } ${extraClasses}`}
           ref={ref}
         >
           {" "}
