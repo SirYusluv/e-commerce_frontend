@@ -1,16 +1,22 @@
 import Button from "@/components/button/button";
 import Input from "@/components/input/input";
+import useRequest from "@/hooks/use-http";
 import Backdrop from "@/layouts/backdrop/backdrop";
 import { emailIsValid, nameIsValid, passwordIsValid } from "@/util/helper";
 import Head from "next/head";
 import Image from "next/image";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import logo from "../../../assets/logo.svg";
 import styles from "./signup.module.scss";
 
 export default function Signup() {
-  const [submitButtonIsActive, setSubmitButtonIsActive] =
-    useState<boolean>(true);
+  const [sendRequest, reset, isLoading, isError, errMsg, response] =
+    useRequest();
+  const [submitButtonIsActive, setSubmitButtonIsActive] = useState<boolean>(
+    !isLoading
+  );
+
+  useEffect(() => setSubmitButtonIsActive(!isLoading), [isLoading]);
 
   const firstNameRef = useRef<HTMLInputElement>(null);
   const lastNameRef = useRef<HTMLInputElement>(null);

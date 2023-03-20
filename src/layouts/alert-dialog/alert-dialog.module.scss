@@ -1,0 +1,15 @@
+@import "../../scss/base/variables";
+
+.alert {
+  background-color: $color-darkest;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  &__action {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+  }
+}

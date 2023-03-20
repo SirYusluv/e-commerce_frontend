@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import backdropSlice from "./backdropSlice";
+import backdropSlice from "./slices/backdropSlice";
 
 export const store = configureStore({
   reducer: {

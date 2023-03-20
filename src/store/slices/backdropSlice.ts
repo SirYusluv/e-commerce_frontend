@@ -12,17 +12,18 @@ export const backdropSlice = createSlice({
   name: "backdrop",
   initialState,
   reducers: {
-    show: (state) => {
+    showBackdrop: (state) => {
       state.showBackdrop = true;
     },
-    hide: (state) => {
+    hideBackdrop: (state) => {
       state.showBackdrop = false;
     },
-    toggle: (state) => {
+    toggleBackdrop: (state) => {
       state.showBackdrop = !state.showBackdrop;
     },
   },
 });
 
-export const { show, hide, toggle } = backdropSlice.actions;
+export const { showBackdrop, hideBackdrop, toggleBackdrop } =
+  backdropSlice.actions;
 export default backdropSlice.reducer;
