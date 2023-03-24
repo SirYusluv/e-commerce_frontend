@@ -1,8 +1,9 @@
-import { LegacyRef } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, LegacyRef } from "react";
 import styles from "./button.module.scss";
 
 interface IProps {
-  type: "main" | "secondary";
+  type?: "button" | "submit" | "reset" | undefined;
+  buttonType: "main" | "secondary";
   text: string;
   ref?: LegacyRef<HTMLButtonElement>;
   extraClasses?: string;
@@ -12,13 +13,14 @@ interface IProps {
 
 export default function Button({
   type,
+  buttonType,
   text,
   extraClasses,
   ref,
   isActive = true,
   buttonClickHandler,
 }: IProps) {
-  switch (type) {
+  switch (buttonType) {
     case "main":
       return (
         <button
@@ -27,6 +29,7 @@ export default function Button({
             isActive ? "" : styles["button__main--not-active"]
           } ${extraClasses}`}
           ref={ref}
+          type={type || "button"}
         >
           {" "}
           {text}
@@ -38,6 +41,7 @@ export default function Button({
           onClick={buttonClickHandler}
           className={`${styles.button} ${styles["button__secondary"]} ${extraClasses}`}
           ref={ref}
+          type={type || "button"}
         >
           {" "}
           {text}

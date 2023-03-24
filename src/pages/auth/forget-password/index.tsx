@@ -24,13 +24,13 @@ export default function ForgetPassword() {
             inputRef={emailAddressRef}
           />
 
-          <Button type="main" text="Signup" />
+          <Button type="submit" buttonType="main" text="Signup" />
         </form>
         <div className={styles.bottom}>
-        <p className={styles["bottom__signup"]}>
-          Don't have an account? <span> Signup</span>
-        </p>
-        <p className={styles["bottom__signin"]}>Signin</p>
+          <p className={styles["bottom__signup"]}>
+            Don't have an account? <span> Signup</span>
+          </p>
+          <p className={styles["bottom__signin"]}>Signin</p>
         </div>
       </main>
     </>

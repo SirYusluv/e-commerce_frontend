@@ -40,14 +40,14 @@ function AlertDialog({
         <div className={styles["alert__action"]}>
           {buttonSec && (
             <Button
-              type="secondary"
+              buttonType="secondary"
               text={buttonSec}
               buttonClickHandler={onButtonSecClick}
             />
           )}
           {buttonPri && (
             <Button
-              type="main"
+              buttonType="main"
               text={buttonPri}
               buttonClickHandler={onButtonPriClick}
             />

@@ -32,21 +32,22 @@ export default function Signup() {
       if (isError || errMsg)
         return setModal(
           <AlertDialog
-            message={errMsg || "Error performing request."}
+            message={errMsg || "Error processing request."}
             buttonPri="Ok"
             onButtonPriClick={removeModalAndBackdrop}
             backdropClickHandler={removeModalAndBackdrop}
           />
         );
 
-      setModal(
-        <AlertDialog
-          message={response.message || "Error getting response."}
-          buttonPri="Ok"
-          onButtonPriClick={removeModalAndBackdrop}
-          backdropClickHandler={removeModalAndBackdrop}
-        />
-      );
+      response.message &&
+        setModal(
+          <AlertDialog
+            message={response.message}
+            buttonPri="Ok"
+            onButtonPriClick={removeModalAndBackdrop}
+            backdropClickHandler={removeModalAndBackdrop}
+          />
+        );
     },
     [isLoading, isError, errMsg, response.message]
   );
@@ -131,7 +132,12 @@ export default function Signup() {
             inputType="password"
             inputRef={passwordRef}
           />
-          <Button type="main" text="Signup" isActive={!isLoading} />
+          <Button
+            type="submit"
+            buttonType="main"
+            text="Signup"
+            isActive={!isLoading}
+          />
         </form>
         <p className={styles["bottom-text"]}>
           Already have an account?{" "}
