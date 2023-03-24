@@ -1,12 +1,12 @@
 import { useReducer } from "react";
 
-interface IOption {
+export interface IOption {
   method?: "GET" | "POST" | "DELETE" | "PATCH";
   headers: HeadersInit;
-  body?: BodyInit;
+  body?: { [ket: string]: string };
 }
 
-interface IResult {
+export interface IResult {
   message: string;
   status: number;
   [key: string]: any;

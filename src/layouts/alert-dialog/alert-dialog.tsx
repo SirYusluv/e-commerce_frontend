@@ -1,4 +1,7 @@
 import Button from "@/components/button/button";
+import { showBackdrop } from "@/store/slices/backdropSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Backdrop from "../backdrop/backdrop";
 import Modal from "../modal/modal";
 import styles from "./alert-dialog.module.scss";
@@ -22,6 +25,12 @@ function AlertDialog({
   onButtonSecClick,
   backdropClickHandler,
 }: IProps) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(showBackdrop());
+  }, []);
+
   return (
     <Modal>
       <Backdrop onBackdropClick={backdropClickHandler} />
