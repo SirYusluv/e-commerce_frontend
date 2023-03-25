@@ -2,21 +2,97 @@ import Button from "@/components/button/button";
 import Input from "@/components/input/input";
 import Head from "next/head";
 import Image from "next/image";
-import { useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import styles from "./forget-password.module.scss";
 import signupStyles from "../signup/signup.module.scss";
 import logo from "../../../assets/logo.svg";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
+import { API_URL } from "@/util/data";
+import { emailIsValid } from "@/util/helper";
+import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
+import { hideBackdrop } from "@/store/slices/backdropSlice";
+import useRequest, { IOption } from "@/hooks/use-http";
 
 export default function ForgetPassword() {
-  const emailAddressRef = useRef(null);
+  const [Modal, setModal] = useState<JSX.Element | null>(null);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [sendRequest, reset, isLoading, isError, errMsg, response] =
+    useRequest();
+
+  const emailAddressRef = useRef<HTMLInputElement>(null);
+
+  useEffect(
+    function () {
+      if (isLoading) return;
+
+      if (isError || errMsg)
+        return setModal(
+          <AlertDialog
+            message={errMsg || "Error processing request."}
+            buttonPri="Ok"
+            onButtonPriClick={removeModalAndBackdrop}
+            backdropClickHandler={removeModalAndBackdrop}
+          />
+        );
+
+      response.message &&
+        setModal(
+          <AlertDialog
+            message={response.message}
+            buttonPri="Ok"
+            onButtonPriClick={removeModalAndBackdrop}
+            backdropClickHandler={removeModalAndBackdrop}
+          />
+        );
+    },
+    [isLoading, isError, errMsg, response.message]
+  );
+
+  function removeModalAndBackdrop() {
+    dispatch(hideBackdrop());
+    setModal(null);
+  }
+
+  function formSubmitHandler(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const emailAddress = emailAddressRef.current?.value;
+
+    if (!emailIsValid(emailAddress || "")) {
+      return setModal(() => (
+        <AlertDialog
+          message="Invalid input data provided."
+          buttonPri="Ok"
+          onButtonPriClick={removeModalAndBackdrop}
+          backdropClickHandler={removeModalAndBackdrop}
+        />
+      ));
+    }
+
+    const options: IOption = {
+      method: "GET",
+      headers: {},
+    };
+    sendRequest(
+      `${API_URL}/auth/send-password-reset-mail/${emailAddress}`,
+      options
+    );
+  }
+
   return (
     <>
       <Head>
-        <title>Signup</title>
+        <title>Reset Password</title>
       </Head>
       <main>
+        {Modal && Modal}
         <Image src={logo} alt="app" className={signupStyles.logo} />
-        <form className={styles["forget-password__form-el"]}>
+        <form
+          onSubmit={formSubmitHandler}
+          className={styles["forget-password__form-el"]}
+        >
           <Input
             extraClasses={styles["forget-password__input"]}
             text="Email address"
@@ -24,15 +100,34 @@ export default function ForgetPassword() {
             inputRef={emailAddressRef}
           />
 
-          <Button type="submit" buttonType="main" text="Signup" />
+          <Button
+            type="submit"
+            buttonType="main"
+            text="Signup"
+            isActive={!isLoading}
+          />
         </form>
         <div className={styles.bottom}>
-          <p className={styles["bottom__signup"]}>
+          <p
+            onClick={() => router.push(`/auth/signup`)}
+            className={styles["bottom__signup"]}
+          >
             Don't have an account? <span> Signup</span>
           </p>
-          <p className={styles["bottom__signin"]}>Signin</p>
+          <p
+            onClick={() => router.push(`/auth/signin`)}
+            className={styles["bottom__signin"]}
+          >
+            Signin
+          </p>
         </div>
       </main>
     </>
   );
+}
+
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
 }
