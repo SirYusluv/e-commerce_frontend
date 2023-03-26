@@ -27,7 +27,8 @@ $width-tablet-potrait: 800px;
 $width-mobile-big: 600px;
 $width-desktop: 1440px;
 $width-tablet: 834px;
-$width-mobile: 320px;
+// $width-mobile: 320px;
+$width-mobile: 400px;
 
 $responsive-min-width: "MINIMUM WIDTH";
 $responsive-max-width: "MAXIMUM WIDTH";
@@ -37,4 +38,7 @@ $responsive-max-height: "MAXIMUM HEIGHT";
 
 :export {
   colorPrimaryMain: $color-primary-main;
+  widthDesktop: $width-desktop;
+  widthTablet: $width-tablet;
+  widthMobile: $width-mobile;
 }

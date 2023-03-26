@@ -1,0 +1,80 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/variables.module.scss";
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 50.4rem;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 3rem;
+  }
+
+  &__hero,
+  &__rating {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 1rem;
+    }
+  }
+
+  &__hero-text {
+    @include display-medium;
+    color: $color-primary-light;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include heading-two-semi-bold;
+    }
+
+    & span {
+      color: $color-primary-darker;
+    }
+  }
+
+  &__btn {
+    width: 16rem;
+    height: 5.4rem;
+    text-align: center;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 12.2rem;
+      height: 5rem;
+    }
+  }
+
+  &__hero-sub {
+    @include subtitle-two-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include body-two-regular;
+    }
+  }
+
+  &__rating--text {
+    @include subtitle-two-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include body-two-regular;
+    }
+  }
+
+  &__stars-ctn {
+    display: flex;
+  }
+
+  &__star-ctn {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}

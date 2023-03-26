@@ -1,0 +1,45 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/responsive.scss";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navi {
+  display: flex;
+  gap: 4.2rem;
+  color: $color-greyscale-white;
+  @include body-two-bold;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    display: none;
+  }
+}
+
+.mobile {
+  &__view {
+    display: none;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      display: block;
+    }
+  }
+}
+
+.search {
+  @include responsive($responsive-max-width, $width-mobile) {
+    display: none;
+  }
+}
+
+.mobile-nav {
+  @include responsive($responsive-max-width, $width-mobile) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

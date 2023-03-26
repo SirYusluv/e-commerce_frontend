@@ -19,6 +19,7 @@
     @include responsive($responsive-max-width, $width-mobile) {
       width: 25.8rem;
       height: 4rem;
+      @include button-two-bold;
     }
   }
 

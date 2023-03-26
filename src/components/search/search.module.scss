@@ -1,0 +1,26 @@
+@import "@/styles/typography.scss";
+@import "@/styles/variables.module.scss";
+
+.search {
+  border: 2px solid $color-greyscale-light;
+  border-radius: 0.5rem;
+  width: 25rem;
+  height: 4rem;
+  display: flex;
+  padding: 10px;
+
+  //   &__text {
+  //     @include body-two-bold;
+  //     margin-left: 1rem;
+  //     margin-right: 13rem;
+  //   }
+
+  &__input {
+    @include body-two-bold;
+    margin: 0 1rem;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+}
