@@ -1,0 +1,26 @@
+@import "@/styles/typography.scss";
+@import "@/styles/variables.module.scss";
+
+.mobile-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  padding: 20rem 10rem 0 5rem;
+  z-index: 100;
+
+  background-color: $color-greyscale-light;
+  @include body-one-bold;
+
+  &__x-btn {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+  }
+
+  &__navi {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+}

@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { API_URL } from "@/util/data";
 import { emailIsValid } from "@/util/helper";
 import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
-import { hideBackdrop } from "@/store/slices/backdropSlice";
+import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import useRequest, { IOption } from "@/hooks/use-http";
 
 export default function ForgetPassword() {

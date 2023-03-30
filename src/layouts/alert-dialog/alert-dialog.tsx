@@ -1,5 +1,5 @@
 import Button from "@/components/button/button";
-import { showBackdrop } from "@/store/slices/backdropSlice";
+import { showBackdrop } from "@/store/slices/backdrop-slice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Backdrop from "../backdrop/backdrop";

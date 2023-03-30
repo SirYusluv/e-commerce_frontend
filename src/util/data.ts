@@ -6,3 +6,4 @@ export const NAME_MAX_LENGTH = 15;
 export const ADDRESS_MIN_LENGTH = 2;
 
 export const API_URL = "http://192.168.95.243:3000";
+export const NAV_ITEMS = ["Home", "Items", "Contact Us"];

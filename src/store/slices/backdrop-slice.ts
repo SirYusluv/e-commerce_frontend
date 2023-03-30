@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface BackdropSlice {
-  showBackdrop: boolean;
-}
-
-const initialState: BackdropSlice = {
+const initialState = {
   showBackdrop: false,
 };
 

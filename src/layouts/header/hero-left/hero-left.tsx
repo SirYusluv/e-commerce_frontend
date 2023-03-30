@@ -31,8 +31,8 @@ export default function HeroLeft() {
         <div className={styles["hero__stars-ctn"]}>
           {...Array(5)
             .fill(0)
-            .map(() => (
-              <div className={styles["hero__star-ctn"]}>
+            .map((_, i) => (
+              <div key={i} className={styles["hero__star-ctn"]}>
                 <Image
                   fill
                   sizes={`(max-width: ${variables.widthMobile}) 15px,

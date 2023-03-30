@@ -1,0 +1,43 @@
+@import "@/styles/variables.module.scss";
+
+.hero {
+  position: relative;
+  width: 40rem;
+
+  &__bag {
+    width: 16.8rem;
+    height: 25.3rem;
+
+    &--ctn {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 25rem;
+      height: 35rem;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      background-color: $color-primary-light;
+    }
+  }
+
+  &__shoe {
+    width: 19.4rem;
+    height: 17.5rem;
+
+    &--ctn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 23rem;
+      height: 33rem;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $color-primary-lighter;
+    }
+  }
+}

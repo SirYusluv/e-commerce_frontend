@@ -2,7 +2,7 @@ import Button from "@/components/button/button";
 import Input from "@/components/input/input";
 import useRequest, { IOption } from "@/hooks/use-http";
 import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
-import { hideBackdrop } from "@/store/slices/backdropSlice";
+import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import { emailIsValid, nameIsValid, passwordIsValid } from "@/util/helper";
 import Head from "next/head";
 import Image from "next/image";
