@@ -1,0 +1,41 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/mixins.scss";
+
+.scaffold {
+  @include flexColumn;
+  gap: 6rem;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 5rem;
+  }
+
+  &__heading {
+    @include flexColumn;
+    gap: 1.5rem;
+    text-align: center;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 0.5rem;
+    }
+  }
+
+  &__title {
+    color: $color-greyscale-black;
+
+    @include heading-three-semi-bold;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include subtitle-one-semi-bold;
+    }
+  }
+
+  &__sub {
+    @include subtitle-two-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include caption-regular;
+    }
+  }
+}

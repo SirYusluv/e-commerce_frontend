@@ -1,0 +1,78 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/responsive.scss";
+
+.services {
+  @include sectionPadding;
+  @include sectionMarginTop;
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+    }
+
+    &--tablet {
+      @include responsive($responsive-max-width, $width-tablet) {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+    }
+  }
+
+  &__item {
+    width: 30rem;
+    height: 31rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 3rem;
+    background-color: $color-primary-lighter;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      width: 25rem;
+      height: 29rem;
+    }
+
+    // &--1 {}
+    // &--2 {}
+    // &--3 {}
+  }
+
+  &__item-image {
+    &--ctn {
+      position: relative;
+      width: 5.3rem;
+      height: 5.5rem;
+
+      @include responsive($responsive-max-width, $width-tablet) {
+        width: 3.3rem;
+        height: 3.5rem;
+      }
+    }
+
+    // &--image {}
+  }
+
+  &__item-title {
+    @include heading-four-bold;
+    color: $color-greyscale-black;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      @include subtitle-one-semi-bold;
+    }
+  }
+
+  &__item-detail {
+    @include subtitle-one-regular;
+    color: $color-greyscale-light;
+  }
+}

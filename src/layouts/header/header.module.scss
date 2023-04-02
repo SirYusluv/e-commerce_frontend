@@ -1,5 +1,6 @@
 @import "@/styles/variables.module.scss";
 @import "@/styles/responsive.scss";
+@import "@/styles/mixins.scss";
 
 .header {
   background-image: linear-gradient(
@@ -7,18 +8,17 @@
     $color-primary-lighter,
     $color-greyscale-white 50%
   );
-  padding: 2.3rem 7.8rem;
   display: flex;
   flex-direction: column;
   gap: 6.3rem;
 
+  @include sectionPadding;
+
   @include responsive($responsive-max-width, $width-tablet) {
-    padding: 3.2rem 5.1rem;
     gap: 5rem;
   }
 
   @include responsive($responsive-max-width, calc($width-mobile + 50px)) {
-    padding: 1.5rem 1.6rem;
     gap: 3.5rem;
   }
 }

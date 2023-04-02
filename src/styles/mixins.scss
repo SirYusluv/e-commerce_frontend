@@ -1,0 +1,32 @@
+@import "./responsive.scss";
+@import "./variables.module.scss";
+
+@mixin sectionPadding {
+  padding: 2.3rem 7.8rem;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    padding: 3.2rem 5.1rem;
+  }
+
+  // @include responsive($responsive-max-width, calc($width-mobile + 50px)) {
+  @include responsive($responsive-max-width, $width-mobile) {
+    padding: 1.5rem 1.6rem;
+  }
+}
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin sectionMarginTop() {
+  margin-top: 12rem;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    margin-top: 10rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    margin-top: 8rem;
+  }
+}
