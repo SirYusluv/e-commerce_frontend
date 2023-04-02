@@ -29,6 +29,10 @@
     @include responsive($responsive-max-width, $width-mobile) {
       @include subtitle-one-semi-bold;
     }
+
+    & span {
+      color: $color-primary-darker;
+    }
   }
 
   &__sub {

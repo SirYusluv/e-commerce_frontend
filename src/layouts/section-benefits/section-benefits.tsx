@@ -144,7 +144,8 @@ export default function SectionBenefits() {
   return (
     <SecLayScaffold
       extraClasses={styles.services}
-      sectionTitle="Benefits of using our services"
+      sectionTitleMain="Benefits"
+      sectionTitle="of using our services"
       sectionSub="Unlock a world of benefits when you shop with us"
     >
       <div className={styles["services__items"]}>{content}</div>
