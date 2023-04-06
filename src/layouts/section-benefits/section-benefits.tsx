@@ -29,7 +29,6 @@ const contents = [
 ];
 
 export default function SectionBenefits() {
-  const isDesktop = useResponsive(`(max-width: ${variables.widthDesktop})`);
   const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
   const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
 
@@ -116,6 +115,7 @@ export default function SectionBenefits() {
     );
   }
 
+  // mobile and desktop
   if (!content) {
     content = contents.map((cont, i) => (
       <ItemCurvedCtn

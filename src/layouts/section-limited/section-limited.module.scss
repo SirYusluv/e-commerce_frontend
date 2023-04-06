@@ -1,0 +1,45 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/typography";
+
+.limited {
+  @include sectionMarginTop;
+  @include sectionPadding;
+}
+
+.item {
+  @include homepageRoundedCtnSizeStyle;
+  gap: 4rem;
+  padding: 2rem;
+
+  &__items {
+    @include homepageRoundedCtnStructure;
+
+    &--tablet {
+      @include homepageRoundedCtnTabletStructure;
+    }
+  }
+
+  &__limit {
+    color: $color-primary-darker;
+    @include heading-three-semi-bold;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include subtitle-one-semi-bold;
+    }
+  }
+
+  &__image {
+    &-ctn {
+      position: relative;
+      height: 22rem;
+      width: 18.2rem;
+
+      @include responsive($responsive-max-width, $width-mobile) {
+        width: 15.5rem;
+        height: 16.5rem;
+      }
+    }
+  }
+}
