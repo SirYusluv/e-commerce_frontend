@@ -4,26 +4,31 @@
 
 .button {
   border-radius: 0.5rem;
+  width: 35.4rem;
+  height: 5rem;
+  border: none;
+  @include button-one-bold;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    width: 25.8rem;
+    height: 4rem;
+    @include button-two-bold;
+  }
+
   &__main {
     background-color: $color-primary-main;
-    width: 35.4rem;
-    height: 5rem;
     color: $color-greyscale-white;
-    border: none;
-    @include button-one-bold;
 
     &--not-active {
       background-color: $color-greyscale-light;
-    }
-
-    @include responsive($responsive-max-width, $width-mobile) {
-      width: 25.8rem;
-      height: 4rem;
-      @include button-two-bold;
     }
   }
 
   &__secondary {
     border: none;
+  }
+
+  &__outlined {
+    border: 2px solid $color-primary-lighter;
   }
 }

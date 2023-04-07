@@ -3,7 +3,7 @@ import styles from "./button.module.scss";
 
 interface IProps {
   type?: "button" | "submit" | "reset" | undefined;
-  buttonType: "main" | "secondary";
+  buttonType: "main" | "secondary" | "outlined";
   text: string;
   ref?: LegacyRef<HTMLButtonElement>;
   extraClasses?: string;
@@ -40,6 +40,18 @@ export default function Button({
         <button
           onClick={buttonClickHandler}
           className={`${styles.button} ${styles["button__secondary"]} ${extraClasses}`}
+          ref={ref}
+          type={type || "button"}
+        >
+          {" "}
+          {text}
+        </button>
+      );
+    case "outlined":
+      return (
+        <button
+          onClick={buttonClickHandler}
+          className={`${styles.button} ${styles["button__outlined"]} ${extraClasses}`}
           ref={ref}
           type={type || "button"}
         >

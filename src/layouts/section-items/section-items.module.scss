@@ -1,0 +1,39 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+
+.sec-items {
+  @include sectionMarginTop;
+  @include sectionPadding;
+
+  &__btns {
+    display: flex;
+    gap: 5rem;
+    overflow: scroll;
+    justify-content: center;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 2rem;
+      justify-content: start;
+    }
+  }
+
+  &__btn {
+    padding: 1.5rem 2rem;
+    width: fit-content;
+    height: fit-content;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      padding: 1.5rem 1rem;
+    }
+  }
+
+  &__contents {
+    @include flexColumn;
+    gap: 4rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 3rem;
+    }
+  }
+}
