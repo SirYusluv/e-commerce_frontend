@@ -65,3 +65,16 @@
     width: 100%;
   }
 }
+
+@mixin hideScrollBar {
+  // chrome, safari and opera
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // IE, edge, firefox
+  & {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

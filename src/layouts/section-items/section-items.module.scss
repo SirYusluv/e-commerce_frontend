@@ -12,6 +12,8 @@
     overflow: scroll;
     justify-content: center;
 
+    @include hideScrollBar;
+
     @include responsive($responsive-max-width, $width-mobile) {
       gap: 2rem;
       justify-content: start;
@@ -34,6 +36,25 @@
 
     @include responsive($responsive-max-width, $width-mobile) {
       gap: 3rem;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    grid-template-rows: repeat(2, min-content);
+    justify-content: space-between;
+    row-gap: 6rem;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      grid-template-columns: repeat(2, min-content);
+      grid-template-rows: repeat(3, min-content);
+    }
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      grid-template-columns: repeat(1, min-content);
+      row-gap: 5rem;
+      margin: auto;
     }
   }
 }

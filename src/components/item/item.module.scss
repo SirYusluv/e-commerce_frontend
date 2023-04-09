@@ -1,0 +1,85 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+
+.item {
+  @include flexColumn;
+  gap: 2rem;
+
+  &__image {
+    object-fit: contain;
+
+    &--ctn {
+      height: 100%;
+      position: relative;
+    }
+
+    &--bg {
+      text-align: center;
+      width: 30rem;
+      height: 30rem;
+      background-color: $color-primary-lighter;
+
+      @include responsive($responsive-max-width, $width-mobile) {
+        width: 28.5rem;
+      }
+
+      &-white {
+        background-color: $color-greyscale-white;
+
+        @include responsive($responsive-max-width, $width-tablet) {
+          background-color: $color-primary-lighter;
+        }
+      }
+    }
+  }
+
+  &__info {
+    @include flexColumn;
+    gap: 1.5rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 0.5rem;
+    }
+  }
+
+  &__heading {
+    color: $color-greyscale-black;
+    @include heading-four-bold;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include subtitle-two-semi-bold;
+    }
+  }
+
+  &__price {
+    @include subtitle-two-medium;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include body-one-regular;
+    }
+  }
+
+  &__ratings {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__star {
+    width: 2rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 1.5rem;
+    }
+  }
+
+  &__review {
+    @include body-one-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include body-two-regular;
+    }
+  }
+}

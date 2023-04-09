@@ -2,10 +2,15 @@ import SecLayScaffold from "../sec-lay-scaffold/sec-lay-scaffold";
 import Button from "@/components/button/button";
 import styles from "./section-items.module.scss";
 import { useState } from "react";
+import Item, { IItem } from "@/components/item/item";
 
-const categories = ["Clothing", "Men", "Women", "Grocery", "Lifestyle"];
+interface IProps {
+  categories: [string, string, string, string, string];
+  items: IItem[];
+  loadItems: (category: string) => void;
+}
 
-export default function SectionItems() {
+export default function SectionItems({ categories, items, loadItems }: IProps) {
   const [activeBtnIndex, setActiveBtnIndex] = useState<number>(0);
 
   return (
@@ -27,7 +32,26 @@ export default function SectionItems() {
           ))}
         </div>
 
-        <div></div>
+        <div className={styles["sec-items__items"]}>
+          {items.map(
+            (
+              { id, name, image, price, remainingCount, reviewCount, stars },
+              i
+            ) => (
+              <Item
+                key={id}
+                id={id}
+                name={name}
+                image={image}
+                price={price}
+                remainingCount={remainingCount}
+                reviewCount={reviewCount}
+                stars={stars}
+                whiteBg={i % 2 === 0 ? false : true}
+              />
+            )
+          )}
+        </div>
       </div>
     </SecLayScaffold>
   );
