@@ -24,7 +24,7 @@
     gap: 50rem;
 
     @include responsive($responsive-max-width, $width-tablet) {
-      gap: 400;
+      gap: 30rem;
     }
 
     @include responsive($responsive-max-width, $width-mobile) {
