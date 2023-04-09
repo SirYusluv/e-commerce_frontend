@@ -1,0 +1,77 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/responsive.scss";
+
+.footer {
+  padding-top: 12rem;
+  padding-bottom: 6rem;
+  height: 50rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-greyscale-black;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    height: 37rem;
+    padding-top: 6rem;
+    align-items: stretch;
+  }
+
+  @include flexColumn;
+
+  &__links {
+    display: flex;
+    gap: 50rem;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      gap: 400;
+    }
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 0;
+      justify-content: space-between;
+      padding-right: 2rem;
+      padding-left: 2rem;
+    }
+  }
+
+  &__side {
+    height: 20rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      height: 14rem;
+    }
+  }
+
+  &__title {
+    margin-bottom: 3.5rem;
+    @include body-one-bold;
+    color: $color-greyscale-white;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include overline-semi-bold;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  &__items {
+    justify-content: space-between;
+    height: 100%;
+    @include flexColumn;
+    @include body-two-bold;
+    cursor: pointer;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include caption-semi-bold;
+    }
+  }
+
+  &__copy {
+    @include body-two-bold;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include caption-medium;
+      align-self: center;
+    }
+  }
+}

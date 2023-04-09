@@ -12,6 +12,7 @@ import womensPolo from "@/assets/items images/womens polo.png";
 import { useState } from "react";
 import { IItem } from "@/components/item/item";
 import SectionReview from "@/layouts/section-review/section-review";
+import Footer from "@/layouts/footer/footer";
 
 const categories: [string, string, string, string, string] = [
   "Clothing",
@@ -106,6 +107,7 @@ export default function Homepage() {
           dataIsLoading={isLoading}
         />
         <SectionReview />
+        <Footer />
       </>
     </>
   );
