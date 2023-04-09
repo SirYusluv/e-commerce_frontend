@@ -94,6 +94,7 @@ export default function SectionLimited() {
         <p className={styles["item__limit"]}>{item.remainingCount} left</p>
         <div className={styles["item__image-ctn"]}>
           <Image
+            className={styles["item__image"]}
             alt="Shoe"
             src={item.image}
             sizes={`(max-width: ${variables.widthMobile}) 185px,

@@ -31,10 +31,12 @@
   }
 
   &__image {
+    object-fit: contain;
+
     &-ctn {
       position: relative;
       height: 22rem;
-      width: 18.2rem;
+      width: 100%;
 
       @include responsive($responsive-max-width, $width-mobile) {
         width: 15.5rem;
