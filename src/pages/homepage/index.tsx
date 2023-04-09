@@ -79,9 +79,14 @@ const itemList: IItem[] = [
 
 export default function Homepage() {
   const [items, setItems] = useState<IItem[]>(itemList);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   function loadItems(_: string) {
-    setTimeout(() => setItems(items), 1000);
+    setIsLoading(true);
+    setTimeout(() => {
+      setItems([...itemList]);
+      setIsLoading(false);
+    }, 1000);
   }
 
   return (
@@ -97,6 +102,7 @@ export default function Homepage() {
           categories={categories}
           items={items}
           loadItems={loadItems}
+          dataIsLoading={isLoading}
         />
       </>
     </>

@@ -8,9 +8,15 @@ interface IProps {
   categories: [string, string, string, string, string];
   items: IItem[];
   loadItems: (category: string) => void;
+  dataIsLoading: boolean;
 }
 
-export default function SectionItems({ categories, items, loadItems }: IProps) {
+export default function SectionItems({
+  categories,
+  items,
+  loadItems,
+  dataIsLoading,
+}: IProps) {
   const [activeBtnIndex, setActiveBtnIndex] = useState<number>(0);
 
   return (
@@ -26,13 +32,20 @@ export default function SectionItems({ categories, items, loadItems }: IProps) {
             <Button
               extraClasses={styles["sec-items__btn"]}
               text={category}
-              buttonClickHandler={() => setActiveBtnIndex(i)}
+              buttonClickHandler={() => {
+                setActiveBtnIndex(i);
+                loadItems(category);
+              }}
               buttonType={activeBtnIndex === i ? "main" : "outlined"}
             />
           ))}
         </div>
 
-        <div className={styles["sec-items__items"]}>
+        <div
+          className={`${styles["sec-items__items"]} ${
+            dataIsLoading ? "low-opacity" : ""
+          }`}
+        >
           {items.map(
             (
               { id, name, image, price, remainingCount, reviewCount, stars },
