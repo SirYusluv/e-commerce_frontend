@@ -1,0 +1,29 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/mixins.scss";
+
+.reviews {
+  background-color: $color-greyscale-light;
+  padding: 10rem 0 10rem 1rem;
+  display: flex;
+
+  overflow-x: scroll;
+
+  @include sectionMarginTop;
+  @include hideScrollBar;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    padding: 6rem 1rem;
+  }
+
+  &__ctn {
+    display: flex;
+    gap: 4rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      flex-direction: column;
+      gap: 3rem;
+      margin: auto;
+    }
+  }
+}

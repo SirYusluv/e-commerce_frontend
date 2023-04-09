@@ -1,0 +1,86 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/mixins.scss";
+
+.card {
+  width: 50rem;
+  height: 25rem;
+  justify-content: space-between;
+  background-color: $color-greyscale-white;
+  padding: 2rem;
+
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    width: 30rem;
+    height: 23.5rem;
+    padding: 1rem;
+  }
+
+  &__review-star {
+    gap: 1rem;
+    @include overline-semi-bold;
+
+    @include flexColumn;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include caption-semi-bold;
+    }
+  }
+
+  &__stars {
+    display: flex;
+  }
+
+  &__star {
+    width: 2rem;
+    object-fit: contain;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 1.5rem;
+    }
+  }
+
+  &__details {
+    display: flex;
+    gap: 2rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      gap: 1rem;
+    }
+  }
+
+  &__image {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 100%;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+
+  &__name-date {
+    @include flexColumn;
+    justify-content: space-evenly;
+  }
+
+  &__name {
+    color: $color-greyscale-black;
+    @include heading-four-semi-bold;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include subtitle-two-semi-bold;
+    }
+  }
+
+  &__date {
+    @include caption-medium;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include caption-regular;
+    }
+  }
+}
