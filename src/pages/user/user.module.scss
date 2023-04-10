@@ -1,0 +1,19 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/mixins.scss";
+
+.main-page {
+  padding-top: 3.2rem;
+  gap: 5.4rem;
+
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 4rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    padding-top: 1.5rem;
+    gap: 4rem;
+  }
+}

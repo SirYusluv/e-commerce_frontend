@@ -2,22 +2,39 @@ import search from "@/assets/search.png";
 import chevronRight from "@/assets/chevron-right.png";
 import Image from "next/image";
 import styles from "./search.module.scss";
+import { FormEvent } from "react";
 
 interface IProps {
   extraClasses?: string;
   onSearchClick?: () => void;
+  text?: string;
+  formSubmitHandler?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
-export default function Search({ extraClasses, onSearchClick }: IProps) {
+export default function Search({
+  extraClasses,
+  onSearchClick,
+  text,
+  formSubmitHandler,
+}: IProps) {
   return (
-    <div
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        formSubmitHandler && formSubmitHandler(e);
+      }}
       onClick={onSearchClick}
       className={`${styles["search"]} ${extraClasses}`}
     >
       <Image alt="search" src={search} />
-      {/* <p className={styles["search__text"]}>Search</p> */}
-      <input placeholder="Search" className={styles["search__input"]} />
-      <Image alt="right arrow" src={chevronRight} />
-    </div>
+
+      <input
+        placeholder={text || "Search"}
+        className={styles["search__input"]}
+      />
+      <button type="submit" className={styles["search__btn"]}>
+        <Image alt="right arrow" src={chevronRight} />
+      </button>
+    </form>
   );
 }

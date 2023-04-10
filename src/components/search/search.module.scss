@@ -7,13 +7,8 @@
   width: 25rem;
   height: 4rem;
   display: flex;
-  padding: 10px;
-
-  //   &__text {
-  //     @include body-two-bold;
-  //     margin-left: 1rem;
-  //     margin-right: 13rem;
-  //   }
+  align-items: center;
+  padding: 0 10px;
 
   &__input {
     @include body-two-bold;
@@ -22,5 +17,10 @@
     border: none;
     outline: none;
     background-color: transparent;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
   }
 }
