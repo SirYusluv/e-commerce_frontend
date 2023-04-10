@@ -75,16 +75,7 @@ const itemsList: IItem[] = [
     reviewCount: 3,
   },
   {
-    id: "0",
-    name: "Casual sweater",
-    image: casualSweater,
-    price: 773,
-    remainingCount: 3,
-    stars: 3,
-    reviewCount: 3,
-  },
-  {
-    id: "0",
+    id: "1",
     name: "Casual sweater",
     image: casualSweater,
     price: 773,
@@ -107,7 +98,7 @@ export default function CategorySec() {
   }
 
   return (
-    <section>
+    <section className={styles["category-sec"]}>
       <Categories
         categories={categories}
         onCategoryClick={categoryClickHandler}

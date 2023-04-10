@@ -1,0 +1,21 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/mixins.scss";
+
+.category-sec {
+  padding: 0 10.5rem;
+  display: flex;
+  gap: 5rem;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    padding: 0 4.8rem;
+    gap: 1.7rem;
+  }
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    padding: 0 1.6rem;
+    gap: 3rem;
+
+    @include flexColumn;
+  }
+}

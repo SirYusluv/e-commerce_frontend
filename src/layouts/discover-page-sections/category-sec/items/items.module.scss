@@ -1,0 +1,16 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/mixins.scss";
+
+.items {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    align-self: center;
+    gap: 3rem;
+
+    @include flexColumn;
+  }
+}
