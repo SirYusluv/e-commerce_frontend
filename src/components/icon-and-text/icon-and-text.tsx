@@ -5,7 +5,7 @@ import styles from "./icon-and-text.module.scss";
 interface IProp {
   icon: StaticImageData;
   text: string;
-  clickHandler?: () => void;
+  clickHandler?: (text?: string) => void;
   extraClasses?: string;
   iconExtraClasses?: string;
   textExtraClasses?: string;
@@ -21,8 +21,10 @@ export default function IconAndText({
 }: IProp) {
   return (
     <div
-      onClick={clickHandler}
-      className={`${styles["icon-and-text"]} ${extraClasses}`}
+      onClick={() => {
+        clickHandler && clickHandler(text);
+      }}
+      className={`${styles["icon-and-text"]} link ${extraClasses}`}
     >
       <Image
         alt="Icon"

@@ -1,0 +1,33 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/mixins.scss";
+
+.categories {
+  &__category {
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    width: max-content;
+    flex: none;
+    color: $color-greyscale-black;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      padding: 1rem;
+    }
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      padding: 0.8rem 1rem;
+    }
+
+    &--active {
+      background-color: $color-primary-light;
+    }
+
+    &--ctn {
+      @include responsive($responsive-max-width, $width-mobile) {
+        display: flex;
+        overflow: scroll;
+        @include hideScrollBar;
+      }
+    }
+  }
+}
