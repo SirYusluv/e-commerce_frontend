@@ -9,10 +9,6 @@
   @include flexColumn;
 
   @include responsive($responsive-max-width, $width-mobile) {
-    gap: 4rem;
-  }
-
-  @include responsive($responsive-max-width, $width-mobile) {
     padding-top: 1.5rem;
     gap: 4rem;
   }

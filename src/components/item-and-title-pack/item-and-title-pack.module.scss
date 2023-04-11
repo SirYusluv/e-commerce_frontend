@@ -1,0 +1,53 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/mixins.scss";
+
+.pack {
+  position: relative;
+  margin: 0 12.2rem;
+  padding: 1rem 0 0 5rem;
+  gap: 3rem;
+
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    margin: 0 5.1rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    margin: 0;
+    padding: 1rem 0 0 1rem;
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18.5rem;
+    width: 100%;
+    z-index: -1;
+    background-color: $color-primary-light;
+  }
+
+  &__title {
+    @include heading-three-semi-bold;
+    color: $color-greyscale-white;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      @include heading-four-semi-bold;
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive($responsive-max-width, $width-tablet) {
+      align-items: center;
+      gap: 3rem;
+
+      @include flexColumn;
+    }
+  }
+}

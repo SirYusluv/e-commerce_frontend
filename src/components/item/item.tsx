@@ -40,7 +40,9 @@ export default function Item({
             className={styles["item__image"]}
             alt={name}
             src={image}
+            sizes="200px"
             fill
+            priority
           />
         </div>
       </div>
@@ -60,6 +62,7 @@ export default function Item({
                 width="20"
                 sizes={`(max-width: ${variables.widthMobile}) 15px,
                 20px`}
+                key={i}
               />
             ))}
           </div>
