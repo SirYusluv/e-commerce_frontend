@@ -9,7 +9,7 @@ import Image from "next/image";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../../../assets/logo.svg";
-import { API_URL } from "@/util/data";
+import { API_URL, HTTP_STATUS } from "@/util/data";
 import styles from "./signup.module.scss";
 import { useRouter } from "next/router";
 
@@ -38,6 +38,26 @@ export default function Signup() {
             backdropClickHandler={removeModalAndBackdrop}
           />
         );
+
+      // signed in successfully
+      if (response.status === HTTP_STATUS.created) {
+        setModal(
+          <AlertDialog
+            message={response.message || "Signed in."}
+            buttonPri="Ok"
+            onButtonPriClick={() => {
+              removeModalAndBackdrop();
+              router.push("/auth/signin");
+            }}
+            backdropClickHandler={() => {
+              removeModalAndBackdrop();
+              router.push("/auth/signin");
+            }}
+          />
+        );
+
+        return;
+      }
 
       response.message &&
         setModal(

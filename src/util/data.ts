@@ -5,5 +5,17 @@ export const NAME_MIN_LENGTH = 1;
 export const NAME_MAX_LENGTH = 15;
 export const ADDRESS_MIN_LENGTH = 2;
 
-export const API_URL = "http://192.168.95.243:3000";
+export const ACCESS_TOKEN = "access_token";
+
+export const API_URL = "http://192.168.165.243:3000";
 export const NAV_ITEMS = ["Home", "Items", "Contact Us"];
+
+export const HTTP_STATUS = {
+  ok: 200,
+  created: 201,
+  badRequest: 400,
+  unauthorized: 401,
+  forbidden: 403,
+  internalServerError: 500,
+  conflict: 409,
+};
