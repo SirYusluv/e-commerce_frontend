@@ -1,0 +1,19 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/mixins.scss";
+@import "@/styles/typography.scss";
+
+.bottom-item {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 0.5rem;
+  color: $color-greyscale-black;
+  justify-content: center;
+  align-items: center;
+
+  @include caption-regular;
+  @include flexColumn;
+
+  &--active {
+    background-color: $color-primary-light;
+  }
+}

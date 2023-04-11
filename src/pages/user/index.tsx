@@ -8,6 +8,7 @@ import styles from "./user.module.scss";
 import useResponsive from "@/hooks/use-responsive";
 import LimitedInStock from "@/layouts/discover-page-sections/limited-in-stock/limited-in-stock";
 import Footer from "@/layouts/footer/footer";
+import MobileBottomNav from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 
 const itemsList: IItem[] = [
   {
@@ -41,6 +42,8 @@ const itemsList: IItem[] = [
 
 export default function UserPage() {
   const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
+  const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
+
   return (
     <main className={styles["main-page"]}>
       <UserNav />
@@ -51,6 +54,7 @@ export default function UserPage() {
       <LimitedInStock
         items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
       />
+      {isMobile && <MobileBottomNav />}
       <Footer />
     </main>
   );

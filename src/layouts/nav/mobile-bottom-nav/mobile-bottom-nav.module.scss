@@ -1,0 +1,14 @@
+@import "@/styles/variables.module.scss";
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid $color-greyscale-light;
+
+  background-color: $color-greyscale-white;
+}
