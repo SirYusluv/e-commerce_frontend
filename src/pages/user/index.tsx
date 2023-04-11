@@ -6,6 +6,8 @@ import { IItem } from "@/components/item/item";
 import variables from "@/styles/variables.module.scss";
 import styles from "./user.module.scss";
 import useResponsive from "@/hooks/use-responsive";
+import LimitedInStock from "@/layouts/discover-page-sections/limited-in-stock/limited-in-stock";
+import Footer from "@/layouts/footer/footer";
 
 const itemsList: IItem[] = [
   {
@@ -46,6 +48,10 @@ export default function UserPage() {
       <TopSellingItems
         items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
       />
+      <LimitedInStock
+        items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
+      />
+      <Footer />
     </main>
   );
 }

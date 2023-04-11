@@ -5,6 +5,6 @@ interface IProp {
   items: IItem[];
 }
 
-export default function TopSellingItems({ items }: IProp) {
-  return <ItemAndTitlePack items={items} title="Top selling items" />;
+export default function LimitedInStock({ items }: IProp) {
+  return <ItemAndTitlePack items={items} title="Limited in stock" />;
 }
