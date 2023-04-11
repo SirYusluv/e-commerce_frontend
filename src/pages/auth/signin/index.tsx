@@ -12,7 +12,7 @@ import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
 import { useDispatch } from "react-redux";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import useRequest, { IOption } from "@/hooks/use-http";
-import { API_URL } from "@/util/data";
+import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
 
 export default function Signin() {
   const [Modal, setModal] = useState<JSX.Element | null>(null);
@@ -22,6 +22,11 @@ export default function Signin() {
   const dispatch = useDispatch();
   const [sendRequest, reset, isLoading, isError, errMsg, response] =
     useRequest();
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    token && router.replace("/user");
+  }, []);
 
   useEffect(
     function () {
@@ -36,6 +41,12 @@ export default function Signin() {
             backdropClickHandler={removeModalAndBackdrop}
           />
         );
+
+      if (response.status === HTTP_STATUS.ok) {
+        localStorage.setItem(ACCESS_TOKEN, response.user?.accessToken || "");
+        router.push("/user");
+        return;
+      }
 
       response.message &&
         setModal(

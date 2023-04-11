@@ -9,7 +9,7 @@ import Image from "next/image";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import logo from "../../../assets/logo.svg";
-import { API_URL, HTTP_STATUS } from "@/util/data";
+import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
 import styles from "./signup.module.scss";
 import { useRouter } from "next/router";
 
@@ -24,6 +24,11 @@ export default function Signup() {
   const emailAddressRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [Modal, setModal] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    token && router.replace("/user");
+  }, []);
 
   useEffect(
     function () {

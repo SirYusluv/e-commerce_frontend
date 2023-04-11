@@ -8,7 +8,7 @@ import signupStyles from "../signup/signup.module.scss";
 import logo from "../../../assets/logo.svg";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import { API_URL } from "@/util/data";
+import { ACCESS_TOKEN, API_URL } from "@/util/data";
 import { emailIsValid } from "@/util/helper";
 import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
@@ -22,6 +22,11 @@ export default function ForgetPassword() {
     useRequest();
 
   const emailAddressRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    token && router.replace("/user");
+  }, []);
 
   useEffect(
     function () {
