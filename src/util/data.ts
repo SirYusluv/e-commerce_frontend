@@ -19,3 +19,15 @@ export const HTTP_STATUS = {
   internalServerError: 500,
   conflict: 409,
 };
+
+export interface IUser {
+  _v: number; // version: added by mongoose
+  _id: string;
+  emailAddress: string;
+  firstName: string;
+  lastName: string;
+  isBlocked: boolean;
+  accountType: string;
+  createdBy: string;
+  createdDate: string;
+}

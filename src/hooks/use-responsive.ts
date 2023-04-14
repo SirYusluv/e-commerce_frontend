@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useResponsive(query) {
+export default function useResponsive(query: string) {
   const [matches, setMatches] = useState(false);
 
   useEffect(

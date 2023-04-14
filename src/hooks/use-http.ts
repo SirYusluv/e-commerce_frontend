@@ -3,7 +3,8 @@ import { useReducer } from "react";
 export interface IOption {
   method?: "GET" | "POST" | "DELETE" | "PATCH";
   headers: HeadersInit;
-  body?: { [ket: string]: string };
+  body?: { [key: string]: string };
+  notJSONBody?: any; // when passing non-json data as body, data like form-data
 }
 
 export interface IResult {
@@ -63,17 +64,27 @@ function useRequest() {
     dispatch({ type: "default" });
   }
 
-  async function request(url: string, options: IOption) {
+  async function request(
+    url: string,
+    options: IOption,
+    setJSONTypeHeader?: boolean
+  ) {
     dispatch({ type: "Loading" });
 
     try {
+      const jsonTypeHeader = {
+        "Content-Type": "Application/json",
+        ...options.headers,
+      };
+
       const resultJSON = await fetch(url, {
         method: options.method || "GET",
-        headers: {
-          "Content-Type": "Application/json",
-          ...options.headers,
-        },
-        body: JSON.stringify(options.body),
+        headers: setJSONTypeHeader
+          ? jsonTypeHeader
+          : {
+              ...options.headers,
+            },
+        body: options.notJSONBody || JSON.stringify(options.body),
       });
 
       const result = await resultJSON.json();
@@ -89,7 +100,11 @@ function useRequest() {
   }
 
   const some: [
-    (url: string, options: IOption) => void | never,
+    (
+      url: string,
+      options: IOption,
+      setJSONTypeHeader?: boolean
+    ) => void | never,
     () => void,
     boolean,
     boolean,

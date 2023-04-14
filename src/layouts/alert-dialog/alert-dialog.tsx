@@ -2,7 +2,7 @@ import Button from "@/components/button/button";
 import { showBackdrop } from "@/store/slices/backdrop-slice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Backdrop from "../backdrop/backdrop";
+import Backdrop, { removeBDStyleFromBD } from "../backdrop/backdrop";
 import Modal from "../modal/modal";
 import styles from "./alert-dialog.module.scss";
 
@@ -33,7 +33,12 @@ function AlertDialog({
 
   return (
     <Modal>
-      <Backdrop onBackdropClick={backdropClickHandler} />
+      <Backdrop
+        onBackdropClick={() => {
+          removeBDStyleFromBD();
+          backdropClickHandler();
+        }}
+      />
       <div className={styles["alert"]}>
         {title && <p className="card-title">{title}</p>}
         <p className="card-detail">{message}</p>
@@ -42,14 +47,20 @@ function AlertDialog({
             <Button
               buttonType="secondary"
               text={buttonSec}
-              buttonClickHandler={onButtonSecClick}
+              buttonClickHandler={() => {
+                removeBDStyleFromBD();
+                onButtonSecClick && onButtonSecClick();
+              }}
             />
           )}
           {buttonPri && (
             <Button
               buttonType="main"
               text={buttonPri}
-              buttonClickHandler={onButtonPriClick}
+              buttonClickHandler={() => {
+                removeBDStyleFromBD();
+                onButtonPriClick && onButtonPriClick();
+              }}
             />
           )}
         </div>

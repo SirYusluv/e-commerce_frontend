@@ -1,0 +1,34 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/mixins.scss";
+
+.upload {
+  gap: 5rem;
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 4rem;
+  }
+
+  &__big-text {
+    border: 2px solid $color-greyscale-black;
+    border-radius: 0.5rem;
+    color: $color-greyscale-grey;
+    padding: 1.5rem;
+    width: 35.4rem;
+    @include body-one-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 25.8rem;
+      padding: 1rem 1.5rem;
+      @include body-two-regular;
+    }
+  }
+
+  &__images {
+    align-items: center;
+    gap: 2rem;
+    @include flexColumn;
+  }
+}
