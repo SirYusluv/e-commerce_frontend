@@ -2,12 +2,13 @@ import search from "@/assets/search.png";
 import chevronRight from "@/assets/chevron-right.png";
 import Image from "next/image";
 import styles from "./search.module.scss";
-import { FormEvent } from "react";
+import { FormEvent, RefObject } from "react";
 
 interface IProps {
   extraClasses?: string;
   onSearchClick?: () => void;
   text?: string;
+  searchInputRef?: RefObject<HTMLInputElement>;
   formSubmitHandler?: (e: FormEvent<HTMLFormElement>) => void;
 }
 
@@ -15,6 +16,7 @@ export default function Search({
   extraClasses,
   onSearchClick,
   text,
+  searchInputRef,
   formSubmitHandler,
 }: IProps) {
   return (
@@ -31,6 +33,7 @@ export default function Search({
       <input
         placeholder={text || "Search"}
         className={styles["search__input"]}
+        ref={searchInputRef}
       />
       <button type="submit" className={styles["search__btn"]}>
         <Image alt="right arrow" src={chevronRight} />
