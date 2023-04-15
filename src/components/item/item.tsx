@@ -4,13 +4,28 @@ import unFilledStar from "@/assets/unfilled-star.svg";
 import variables from "@/styles/variables.module.scss";
 import styles from "./item.module.scss";
 
+export interface IItemFromDb {
+  _id: string;
+  itemName: string;
+  price: number;
+  images: [string, string, string];
+  itemDescription1: string;
+  itemDescription2: string;
+  remainingCount: number;
+  addedBy: string;
+  categories: string[];
+  boughtByCount: number;
+  dateAdded: string;
+  _v: number;
+}
+
 export interface IItem {
   id: string;
   name: string;
   price: number;
   remainingCount: number;
   reviewCount: number;
-  stars: number;
+  stars: number; // review feature is not added to backend yet
   // images: string // TODO: when images is from db
   image: StaticImageData;
 }

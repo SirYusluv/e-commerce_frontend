@@ -25,7 +25,7 @@ const categories: [string, string, string, string, string] = [
 const itemList: IItem[] = [
   {
     id: "1",
-    name: "Casual Sweater",
+    itemName: "Casual Sweater",
     price: 5000,
     remainingCount: 2,
     reviewCount: 791,
@@ -34,7 +34,7 @@ const itemList: IItem[] = [
   },
   {
     id: "2",
-    name: "Black round neck",
+    itemName: "Black round neck",
     price: 5060,
     remainingCount: 2,
     reviewCount: 91,
@@ -43,7 +43,7 @@ const itemList: IItem[] = [
   },
   {
     id: "3",
-    name: "Gown",
+    itemName: "Gown",
     price: 2500,
     remainingCount: 2,
     reviewCount: 791,
@@ -52,7 +52,7 @@ const itemList: IItem[] = [
   },
   {
     id: "4",
-    name: "Men's polo 6 set",
+    itemName: "Men's polo 6 set",
     price: 5000,
     remainingCount: 2,
     reviewCount: 791,
@@ -61,7 +61,7 @@ const itemList: IItem[] = [
   },
   {
     id: "5",
-    name: "Plain white roundneck",
+    itemName: "Plain white roundneck",
     price: 650,
     remainingCount: 63,
     reviewCount: 79,
@@ -70,7 +70,7 @@ const itemList: IItem[] = [
   },
   {
     id: "6",
-    name: "Women's polo",
+    itemName: "Women's polo",
     price: 5000,
     remainingCount: 2,
     reviewCount: 791,

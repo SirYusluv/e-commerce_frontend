@@ -11,10 +11,18 @@ export default function Items({ items, itemsIsLoading }: IProps) {
   return (
     <div className={`${styles.items} ${itemsIsLoading ? "low-opacity" : ""}`}>
       {items.map(
-        ({ id, name, price, remainingCount, reviewCount, image, stars }) => (
+        ({
+          id,
+          itemName: name,
+          price,
+          remainingCount,
+          reviewCount,
+          image,
+          stars,
+        }) => (
           <Item
             id={id}
-            name={name}
+            itemName={name}
             price={price}
             remainingCount={remainingCount}
             image={image}

@@ -1,0 +1,58 @@
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.module.scss";
+
+.page {
+  margin-top: 3.2rem;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    margin-top: 1.5rem;
+  }
+
+  &__info {
+    margin-top: 100px;
+    text-align: center;
+    color: $color-greyscale-black;
+
+    @include heading-three-semi-bold;
+  }
+}
+
+.main {
+  min-height: 50vh;
+  margin: 5.4rem 10.2rem 11rem 10.2rem;
+  gap: 11rem;
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    margin: 5rem 5.1rem 10rem 5.1rem;
+    gap: 10rem;
+  }
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    margin: 4rem 1.75rem 8rem 1.75rem;
+    gap: 8rem;
+  }
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+  grid-template-rows: repeat(3, min-content);
+  justify-content: space-between;
+  row-gap: 5.4rem;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    grid-template-columns: repeat(2, min-content);
+    grid-template-rows: repeat(5, min-content);
+    row-gap: 5rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    grid-template-columns: repeat(1, min-content);
+    row-gap: 4rem;
+    width: max-content;
+    margin: auto;
+  }
+}

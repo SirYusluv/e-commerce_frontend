@@ -67,7 +67,7 @@ function useRequest() {
   async function request(
     url: string,
     options: IOption,
-    setJSONTypeHeader?: boolean
+    setJSONTypeHeader: boolean = true
   ) {
     dispatch({ type: "Loading" });
 

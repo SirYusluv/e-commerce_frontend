@@ -6,6 +6,7 @@
 .item {
   @include flexColumn;
   gap: 2rem;
+  color: $color-greyscale-grey;
 
   &__image {
     object-fit: contain;

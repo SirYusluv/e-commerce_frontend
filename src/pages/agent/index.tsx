@@ -1,10 +1,16 @@
 import Upload from "@/layouts/upload-update/upload/upload";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styles from "./upload-update.module.scss";
 
 export default function UploadUpdate() {
   const router = useRouter();
+
+  useEffect(() => {
+    !router.query.path && router.replace("/agent?path=upload");
+  }, []);
+
   const nav = (
     <nav className={styles.nav}>
       <Link

@@ -48,13 +48,21 @@ export default function SectionItems({
         >
           {items.map(
             (
-              { id, name, image, price, remainingCount, reviewCount, stars },
+              {
+                id,
+                itemName: name,
+                image,
+                price,
+                remainingCount,
+                reviewCount,
+                stars,
+              },
               i
             ) => (
               <Item
                 key={id}
                 id={id}
-                name={name}
+                itemName={name}
                 image={image}
                 price={price}
                 remainingCount={remainingCount}

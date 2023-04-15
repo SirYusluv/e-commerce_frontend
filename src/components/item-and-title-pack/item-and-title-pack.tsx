@@ -16,12 +16,20 @@ export default function ItemAndTitlePack({ items, title }: IProp) {
       <div className={styles["pack__items"]}>
         {items.map(
           (
-            { id, name, image, price, remainingCount, reviewCount, stars },
+            {
+              id,
+              itemName: name,
+              image,
+              price,
+              remainingCount,
+              reviewCount,
+              stars,
+            },
             i
           ) => (
             <Item
               id={id}
-              name={name}
+              itemName={name}
               image={image}
               price={price}
               remainingCount={remainingCount}
