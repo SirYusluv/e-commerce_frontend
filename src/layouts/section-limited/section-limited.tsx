@@ -1,33 +1,21 @@
 import useResponsive from "@/hooks/use-responsive";
 import SecLayScaffold from "../sec-lay-scaffold/sec-lay-scaffold";
 import variables from "@/styles/variables.module.scss";
-import bag from "@/assets/bg-bag.png";
-import nike from "@/assets/bg-nike.png";
 import styles from "./section-limited.module.scss";
 import Image, { StaticImageData } from "next/image";
 import ItemCurvedCtn from "@/components/item-curved-ctn/item-curved-ctn";
+import { API_URL } from "@/util/data";
 
-interface IItem {
-  image: StaticImageData;
+export interface ILimitedItem {
+  image: StaticImageData | string;
   remainingCount: number;
 }
 
-const items: [IItem, IItem, IItem] = [
-  {
-    image: nike,
-    remainingCount: 4,
-  },
-  {
-    image: bag,
-    remainingCount: 2,
-  },
-  {
-    image: nike,
-    remainingCount: 1,
-  },
-];
+interface IProp {
+  limitedItems: ILimitedItem[];
+}
 
-export default function SectionLimited() {
+export default function SectionLimited({ limitedItems }: IProp) {
   const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
   const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
 
@@ -39,12 +27,12 @@ export default function SectionLimited() {
       <>
         <ItemCurvedCtn extraClasses={styles.item}>
           <p className={styles["item__limit"]}>
-            {items[0].remainingCount} left
+            {limitedItems[0].remainingCount} left
           </p>
           <div className={styles["item__image-ctn"]}>
             <Image
               alt="Shoe"
-              src={items[0].image}
+              src={`${API_URL}/${limitedItems[0].image}`}
               sizes={`(max-width: ${variables.widthMobile}) 185px,
           218px`}
               fill
@@ -55,12 +43,12 @@ export default function SectionLimited() {
         <div className={styles["item__items--tablet"]}>
           <ItemCurvedCtn extraClasses={styles.item}>
             <p className={styles["item__limit"]}>
-              {items[1].remainingCount} left
+              {limitedItems[1].remainingCount} left
             </p>
             <div className={styles["item__image-ctn"]}>
               <Image
                 alt="Shoe"
-                src={items[1].image}
+                src={`${API_URL}/${limitedItems[1].image}`}
                 sizes={`(max-width: ${variables.widthMobile}) 185px,
           218px`}
                 fill
@@ -70,12 +58,12 @@ export default function SectionLimited() {
 
           <ItemCurvedCtn extraClasses={styles.item}>
             <p className={styles["item__limit"]}>
-              {items[2].remainingCount} left
+              {limitedItems[2].remainingCount} left
             </p>
             <div className={styles["item__image-ctn"]}>
               <Image
                 alt="Shoe"
-                src={items[2].image}
+                src={`${API_URL}/${limitedItems[2].image}`}
                 sizes={`(max-width: ${variables.widthMobile}) 185px,
           218px`}
                 fill
@@ -89,14 +77,14 @@ export default function SectionLimited() {
 
   // mobile and desktop
   if (!content) {
-    content = items.map((item, i) => (
+    content = limitedItems.map((item, i) => (
       <ItemCurvedCtn key={i} extraClasses={styles.item}>
         <p className={styles["item__limit"]}>{item.remainingCount} left</p>
         <div className={styles["item__image-ctn"]}>
           <Image
             className={styles["item__image"]}
             alt="Shoe"
-            src={item.image}
+            src={`${API_URL}/${item.image}`}
             sizes={`(max-width: ${variables.widthMobile}) 185px,
         218px`}
             fill

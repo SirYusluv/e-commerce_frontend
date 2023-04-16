@@ -1,94 +1,111 @@
 import Header from "@/layouts/header/header";
 import SectionBenefits from "@/layouts/section-benefits/section-benefits";
 import SectionItems from "@/layouts/section-items/section-items";
-import SectionLimited from "@/layouts/section-limited/section-limited";
+import SectionLimited, {
+  ILimitedItem,
+} from "@/layouts/section-limited/section-limited";
 import Head from "next/head";
-import blackRoundNeck from "@/assets/items images/black round neck.png";
-import casualSweater from "@/assets/items images/casual sweater.png";
-import gown from "@/assets/items images/gown.png";
-import mensPolo from "@/assets/items images/mens polo 6 set.png";
-import plainWhiteRoundNeck from "@/assets/items images/plain white roundneck.png";
-import womensPolo from "@/assets/items images/womens polo.png";
-import { useState } from "react";
-import { IItem } from "@/components/item/item";
+import { useEffect, useState } from "react";
+import { IItem, IItemFromDb } from "@/components/item/item";
 import SectionReview from "@/layouts/section-review/section-review";
 import Footer from "@/layouts/footer/footer";
+import { useRouter } from "next/router";
+import useRequest from "@/hooks/use-http";
+import { API_URL, HTTP_STATUS } from "@/util/data";
+import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
+import { useDispatch } from "react-redux";
+import { hideBackdrop } from "@/store/slices/backdrop-slice";
+
+interface IProp {
+  limited: ILimitedItem[];
+  category: IItem[];
+}
 
 const categories: [string, string, string, string, string] = [
-  "Clothing",
   "Men",
   "Women",
+  "Clothing",
   "Grocery",
   "Lifestyle",
 ];
 
-const itemList: IItem[] = [
-  {
-    id: "1",
-    itemName: "Casual Sweater",
-    price: 5000,
-    remainingCount: 2,
-    reviewCount: 791,
-    stars: 5,
-    image: casualSweater,
-  },
-  {
-    id: "2",
-    itemName: "Black round neck",
-    price: 5060,
-    remainingCount: 2,
-    reviewCount: 91,
-    stars: 3,
-    image: blackRoundNeck,
-  },
-  {
-    id: "3",
-    itemName: "Gown",
-    price: 2500,
-    remainingCount: 2,
-    reviewCount: 791,
-    stars: 2,
-    image: gown,
-  },
-  {
-    id: "4",
-    itemName: "Men's polo 6 set",
-    price: 5000,
-    remainingCount: 2,
-    reviewCount: 791,
-    stars: 4,
-    image: mensPolo,
-  },
-  {
-    id: "5",
-    itemName: "Plain white roundneck",
-    price: 650,
-    remainingCount: 63,
-    reviewCount: 79,
-    stars: 4,
-    image: plainWhiteRoundNeck,
-  },
-  {
-    id: "6",
-    itemName: "Women's polo",
-    price: 5000,
-    remainingCount: 2,
-    reviewCount: 791,
-    stars: 5,
-    image: womensPolo,
-  },
-];
+export default function Homepage({ limited, category }: IProp) {
+  const [items, setItems] = useState<IItem[]>(category);
+  const [dialog, setDialog] = useState<null | JSX.Element>(null);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
 
-export default function Homepage() {
-  const [items, setItems] = useState<IItem[]>(itemList);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  useEffect(() => {
+    if (router.pathname === "/homepage") router.replace("/");
+  }, []);
 
-  function loadItems(_: string) {
-    setIsLoading(true);
-    setTimeout(() => {
-      setItems([...itemList]);
-      setIsLoading(false);
-    }, 1000);
+  useEffect(
+    function () {
+      if (isLoading) return;
+
+      if (isError || errMsg) {
+        setDialog(
+          <AlertDialog
+            message={errMsg || "Error occurred."}
+            buttonPri="Ok"
+            backdropClickHandler={() => {
+              setDialog(null);
+              dispatch(hideBackdrop());
+            }}
+            onButtonPriClick={() => {
+              setDialog(null);
+              dispatch(hideBackdrop());
+            }}
+          />
+        );
+        return;
+      }
+
+      if (response.status === HTTP_STATUS.ok) {
+        const items: IItem[] = (response.items as IItemFromDb[]).map(
+          ({ images, remainingCount, _id, itemName, price }) => ({
+            image: images[0],
+            remainingCount,
+            id: _id,
+            name: itemName,
+            price: price,
+            reviewCount: Math.floor(Math.random() * 100) + 1, // random number from 1 - 99
+            stars: Math.floor(Math.random() * 4) + 2, // random number from 2 - 5
+          })
+        );
+        setItems(items);
+        return;
+      }
+
+      response.message &&
+        setDialog(
+          <AlertDialog
+            message={response.message}
+            buttonPri="Ok"
+            backdropClickHandler={() => {
+              setDialog(null);
+              dispatch(hideBackdrop());
+            }}
+            onButtonPriClick={() => {
+              setDialog(null);
+              dispatch(hideBackdrop());
+            }}
+          />
+        );
+    },
+    [isLoading, isError, errMsg]
+  );
+
+  function loadItems(categoryToLoad: string) {
+    const toLoad = categoryToLoad.toLowerCase();
+
+    sendRequest(
+      `${API_URL}/auth/item?category=${toLoad}&topBought=true&limit=6`,
+      {
+        headers: {},
+      }
+    );
   }
 
   return (
@@ -97,9 +114,10 @@ export default function Homepage() {
         <title>E-Commerce</title>
       </Head>
       <>
+        {dialog}
         <Header />
         <SectionBenefits />
-        <SectionLimited />
+        <SectionLimited limitedItems={limited} />
         <SectionItems
           categories={categories}
           items={items}
@@ -111,11 +129,4 @@ export default function Homepage() {
       </>
     </>
   );
-}
-
-export async function getStaticProps() {
-  return {
-    props: {},
-    revalidate: 48 * 60 * 60, // every 48hrs
-  };
 }

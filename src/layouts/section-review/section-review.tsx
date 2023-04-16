@@ -36,8 +36,9 @@ export default function SectionReview() {
   return (
     <section className={styles.reviews}>
       <div className={styles["reviews__ctn"]}>
-        {...reviews.map(({ name, review, stars, image, date }) => (
+        {...reviews.map(({ name, review, stars, image, date }, i) => (
           <ReviewCard
+            key={i}
             name={name}
             review={review}
             stars={stars}

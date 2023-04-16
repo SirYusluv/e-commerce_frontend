@@ -8,10 +8,20 @@ export default function HeroRight() {
   return (
     <div className={styles.hero}>
       <ItemCurvedCtn extraClasses={styles["hero__bag--ctn"]}>
-        <Image className={styles["hero__bag"]} alt="bag" src={bag} />
+        <Image
+          className={styles["hero__bag"]}
+          width="16.8"
+          alt="bag"
+          src={bag}
+        />
       </ItemCurvedCtn>
       <ItemCurvedCtn extraClasses={styles["hero__shoe--ctn"]}>
-        <Image className={styles["hero__shoe"]} alt="shoe" src={shoe} />
+        <Image
+          className={styles["hero__shoe"]}
+          width="19.4"
+          alt="shoe"
+          src={shoe}
+        />
       </ItemCurvedCtn>
     </div>
   );

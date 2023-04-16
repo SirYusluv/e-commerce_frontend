@@ -18,7 +18,7 @@ export default function ItemAndTitlePack({ items, title }: IProp) {
           (
             {
               id,
-              itemName: name,
+              name: name,
               image,
               price,
               remainingCount,
@@ -29,7 +29,7 @@ export default function ItemAndTitlePack({ items, title }: IProp) {
           ) => (
             <Item
               id={id}
-              itemName={name}
+              name={name}
               image={image}
               price={price}
               remainingCount={remainingCount}

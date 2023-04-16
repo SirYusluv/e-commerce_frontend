@@ -28,7 +28,7 @@ export default function ReviewCard({
             .map((_, i) => (
               <Image
                 className={styles["card__star"]}
-                key={date}
+                key={date + i}
                 alt="star"
                 src={i + 1 > stars ? unFilledStar : filledStar}
                 width="20"

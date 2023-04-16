@@ -3,6 +3,7 @@ import Button from "@/components/button/button";
 import styles from "./section-items.module.scss";
 import { useState } from "react";
 import Item, { IItem } from "@/components/item/item";
+import { API_URL } from "@/util/data";
 
 interface IProps {
   categories: [string, string, string, string, string];
@@ -30,6 +31,7 @@ export default function SectionItems({
         <div className={styles["sec-items__btns"]}>
           {categories.map((category, i) => (
             <Button
+              key={i}
               extraClasses={styles["sec-items__btn"]}
               text={category}
               buttonClickHandler={() => {
@@ -48,22 +50,14 @@ export default function SectionItems({
         >
           {items.map(
             (
-              {
-                id,
-                itemName: name,
-                image,
-                price,
-                remainingCount,
-                reviewCount,
-                stars,
-              },
+              { id, name, image, price, remainingCount, reviewCount, stars },
               i
             ) => (
               <Item
                 key={id}
                 id={id}
-                itemName={name}
-                image={image}
+                name={name}
+                image={`${API_URL}/${image}`}
                 price={price}
                 remainingCount={remainingCount}
                 reviewCount={reviewCount}

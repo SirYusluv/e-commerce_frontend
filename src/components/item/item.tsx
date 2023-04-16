@@ -27,7 +27,7 @@ export interface IItem {
   reviewCount: number;
   stars: number; // review feature is not added to backend yet
   // images: string // TODO: when images is from db
-  image: StaticImageData;
+  image: string | StaticImageData;
 }
 
 interface IItemExtended extends IItem {
