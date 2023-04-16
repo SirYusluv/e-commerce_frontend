@@ -1,0 +1,56 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
+
+.info {
+  gap: 3rem;
+  color: $color-greyscale-black;
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    gap: 2rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 1.5rem;
+  }
+
+  &__name {
+    @include heading-two-semi-bold;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    @include heading-three-semi-bold;
+  }
+
+  &__ratings {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__star {
+    width: 2rem;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      width: 1.5rem;
+    }
+  }
+
+  &__review {
+    @include body-one-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include body-two-regular;
+    }
+  }
+
+  &__price {
+    @include subtitle-two-medium;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include body-one-regular;
+    }
+  }
+}

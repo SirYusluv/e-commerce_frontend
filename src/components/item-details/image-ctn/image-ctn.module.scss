@@ -1,0 +1,62 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/variables.module.scss";
+
+.images {
+  width: min-content;
+  gap: 3rem;
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 1.5rem;
+  }
+
+  &__main {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    &--ctn {
+      width: 36.5rem;
+      height: 36.5rem;
+      border-radius: 5px;
+      position: relative;
+      background-color: $color-primary-lighter;
+
+      @include responsive($responsive-max-width, $width-tablet) {
+        width: 30.5rem;
+        height: 30.5rem;
+      }
+
+      @include responsive($responsive-max-width, $width-mobile) {
+        width: 28.4rem;
+        height: 28.4rem;
+      }
+    }
+  }
+
+  &__sub {
+    object-fit: contain;
+    &--ctn {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 5px;
+      position: relative;
+      background-color: $color-primary-lighter;
+
+      @include responsive($responsive-max-width, $width-tablet) {
+        width: 70rem;
+        height: 70rem;
+      }
+
+      &-active {
+        background-color: $color-primary-light;
+      }
+    }
+
+    &--main-ctn {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

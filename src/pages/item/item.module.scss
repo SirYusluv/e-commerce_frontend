@@ -1,0 +1,10 @@
+@import "@/styles/typography.scss";
+@import "@/styles/variables.module.scss";
+
+.info {
+  margin-top: 100px;
+  text-align: center;
+  color: $color-greyscale-black;
+
+  @include heading-three-semi-bold;
+}

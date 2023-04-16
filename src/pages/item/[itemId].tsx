@@ -7,13 +7,46 @@ import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import variables from "@/styles/variables.module.scss";
+import styles from "./item.module.scss";
+import useResponsive from "@/hooks/use-responsive";
+import ImageCtn from "@/components/item-details/image-ctn/image-ctn";
+import Info from "@/components/item-details/info/info";
+import Detail from "@/components/item-details/detail/detail";
 
 export default function ItemPage() {
   const [item, setItem] = useState<IItemFromDb | null>(null);
+  //   const [content, setContent] = useState<JSX.Element | null>(null)
   const [dialog, setDialog] = useState<JSX.Element | null>(null);
   const router = useRouter();
+  const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
   const dispatch = useDispatch();
   const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
+
+  let content: JSX.Element | null = null;
+
+  if (item) {
+    content = (
+      <>
+        <ImageCtn
+          image1={`${API_URL}/${item.images[0]}`}
+          image2={`${API_URL}/${item.images[1]}`}
+          image3={`${API_URL}/${item.images[2]}`}
+        />
+
+        <div>
+          <Info
+            itemName={item.itemName}
+            price={item.price}
+            remainingCount={item.remainingCount}
+            reviewCount={23}
+            stars={4}
+          />
+          <Detail desc1={item.itemDescription1} desc2={item.itemDescription2} />
+        </div>
+      </>
+    );
+  }
 
   useEffect(() => {
     const itemId = window.location.pathname.split("/")[2];
@@ -79,8 +112,10 @@ export default function ItemPage() {
     <>
       <ItemDetailNav title="Product detail" />
       {dialog}
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && !item && <p>Item not found.</p>}
+      {isLoading && <p className={styles.info}>Loading...</p>}
+      {!isLoading && !item && <p className={styles.info}>Item not found.</p>}
+
+      <main>{content}</main>
     </>
   );
 }
