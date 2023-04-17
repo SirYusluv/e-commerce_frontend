@@ -69,10 +69,11 @@ a {
 .info {
   margin-top: 100px;
   text-align: center;
-  color: $color-greyscale-black;
+  color: $color-primary-main;
 
   @include heading-three-semi-bold;
 }
+
 //************************************************//
 // SOME MEDIA FOR WIDTH AND HEIGHT                //
 //************************************************//

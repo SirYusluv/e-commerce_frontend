@@ -116,7 +116,7 @@ export default function Cart() {
 
   return (
     <>
-      <ItemDetailNav title="Orders" />
+      <ItemDetailNav title="Carts" />
       {dialog}
       {isLoading && <p className="info">Loading...</p>}
       {!isLoading && !cart?.length && <p className="info">Cart is empty.</p>}

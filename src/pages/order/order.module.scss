@@ -1,0 +1,26 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+
+.cart {
+  padding: 5rem 10.2rem;
+  display: flex;
+  justify-content: space-between;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    padding: 5rem 2rem 5rem 5.1rem;
+    flex-direction: column;
+    gap: 10rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    padding: 4rem 1rem 4rem 1.8rem;
+    gap: 4rem;
+  }
+
+  &__item {
+    gap: 3rem;
+    @include flexColumn;
+  }
+}
