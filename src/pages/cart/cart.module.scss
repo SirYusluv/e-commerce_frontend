@@ -5,17 +5,61 @@
 
 .cart {
   padding: 5rem 10.2rem;
+  display: flex;
+  justify-content: space-between;
 
   @include responsive($responsive-max-width, $width-tablet) {
     padding: 5rem 2rem 5rem 5.1rem;
+    flex-direction: column;
+    gap: 10rem;
   }
 
   @include responsive($responsive-max-width, $width-mobile) {
     padding: 4rem 1rem 4rem 1.8rem;
+    gap: 4rem;
   }
 
   &__item {
     gap: 3rem;
     @include flexColumn;
+  }
+}
+
+.summary {
+  gap: 5rem;
+  width: min-content;
+
+  @include flexColumn;
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    gap: 4rem;
+    width: min-content;
+    margin: auto;
+  }
+
+  &__title {
+    @include heading-three-medium;
+    color: $color-greyscale-black;
+    border-bottom: 2px solid $color-greyscale-light;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include heading-four-semi-bold;
+    }
+  }
+
+  &__item-group {
+    display: flex;
+    justify-content: space-between;
+
+    @include heading-four-regular;
+
+    @include responsive($responsive-max-width, $width-mobile) {
+      @include subtitle-one-semi-bold;
+    }
+  }
+
+  &__item-total {
+    color: $color-greyscale-black;
+    @include heading-four-semi-bold;
   }
 }

@@ -1,9 +1,11 @@
+import Button from "@/components/button/button";
 import CartItem from "@/components/cart-item/cart-item";
 import useRequest from "@/hooks/use-http";
 import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
 import ItemDetailNav from "@/layouts/nav/item-detail-nav/item-detail-nav";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./cart.module.scss";
@@ -18,7 +20,10 @@ export default function Cart() {
   const [cart, setCart] = useState<ICartUndetailed[] | null>(null);
   const [dialog, setDialog] = useState<JSX.Element | null>(null);
   const dispatch = useDispatch();
+  const router = useRouter();
   const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
+
+  let total = 15000; // some dummy price
 
   useEffect(() => {
     sendRequest(`${API_URL}/cart/cart`, {
@@ -98,6 +103,9 @@ export default function Cart() {
     });
   }
 
+  // INFO: should be changed to route to checkout page
+  function checkOutBtnClickHandler() {}
+
   return (
     <>
       <ItemDetailNav title="Orders" />
@@ -146,7 +154,36 @@ export default function Cart() {
 
         {/* TODO: add pagination */}
 
-        <div></div>
+        <div className={styles["summary"]}>
+          <h4 className={styles["summary__title"]}>Cart Summary</h4>
+          <div className={styles["summary__item-group"]}>
+            <p>Item's count</p>
+            <p>{cart?.length}</p>
+          </div>
+
+          <div className={styles["summary__item-group"]}>
+            <p>Discount</p>
+            <p>&#x20A6;0</p>
+          </div>
+
+          <div className={styles["summary__item-group"]}>
+            <p>Sub-Total</p>
+            <p>&#x20A6;{total}</p>
+          </div>
+
+          <div
+            className={`${styles["summary__item-group"]} ${styles["summary__item-total"]}`}
+          >
+            <p>Total</p>
+            <p>&#x20A6;{total}</p>
+          </div>
+
+          <Button
+            text="Checkout"
+            buttonClickHandler={checkOutBtnClickHandler}
+            buttonType="main"
+          />
+        </div>
       </main>
     </>
   );
