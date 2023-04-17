@@ -55,13 +55,6 @@ export default function Cart() {
         return;
       }
 
-      if (response.status === HTTP_STATUS.ok) {
-        const cart: ICartUndetailed[] = (response.cart?.items ||
-          []) as ICartUndetailed[];
-        cart.length && setCart(cart);
-        return;
-      }
-
       response.message &&
         setDialog(
           <AlertDialog
@@ -77,6 +70,13 @@ export default function Cart() {
             }}
           />
         );
+
+      if (response.status === HTTP_STATUS.ok) {
+        const cart: ICartUndetailed[] = (response.cart?.items ||
+          []) as ICartUndetailed[];
+        cart.length && setCart(cart);
+        return;
+      }
     },
     [isLoading, errMsg, isError]
   );
@@ -104,7 +104,15 @@ export default function Cart() {
   }
 
   // INFO: should be changed to route to checkout page
-  function checkOutBtnClickHandler() {}
+  function checkOutBtnClickHandler() {
+    sendRequest(`${API_URL}/order/order`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+    });
+    setCart(null);
+  }
 
   return (
     <>
@@ -154,36 +162,38 @@ export default function Cart() {
 
         {/* TODO: add pagination */}
 
-        <div className={styles["summary"]}>
-          <h4 className={styles["summary__title"]}>Cart Summary</h4>
-          <div className={styles["summary__item-group"]}>
-            <p>Item's count</p>
-            <p>{cart?.length}</p>
-          </div>
+        {cart?.length && (
+          <div className={styles["summary"]}>
+            <h4 className={styles["summary__title"]}>Cart Summary</h4>
+            <div className={styles["summary__item-group"]}>
+              <p>Item's count</p>
+              <p>{cart?.length}</p>
+            </div>
 
-          <div className={styles["summary__item-group"]}>
-            <p>Discount</p>
-            <p>&#x20A6;0</p>
-          </div>
+            <div className={styles["summary__item-group"]}>
+              <p>Discount</p>
+              <p>&#x20A6;0</p>
+            </div>
 
-          <div className={styles["summary__item-group"]}>
-            <p>Sub-Total</p>
-            <p>&#x20A6;{total}</p>
-          </div>
+            <div className={styles["summary__item-group"]}>
+              <p>Sub-Total</p>
+              <p>&#x20A6;{total}</p>
+            </div>
 
-          <div
-            className={`${styles["summary__item-group"]} ${styles["summary__item-total"]}`}
-          >
-            <p>Total</p>
-            <p>&#x20A6;{total}</p>
-          </div>
+            <div
+              className={`${styles["summary__item-group"]} ${styles["summary__item-total"]}`}
+            >
+              <p>Total</p>
+              <p>&#x20A6;{total}</p>
+            </div>
 
-          <Button
-            text="Checkout"
-            buttonClickHandler={checkOutBtnClickHandler}
-            buttonType="main"
-          />
-        </div>
+            <Button
+              text="Checkout"
+              buttonClickHandler={checkOutBtnClickHandler}
+              buttonType="main"
+            />
+          </div>
+        )}
       </main>
     </>
   );
