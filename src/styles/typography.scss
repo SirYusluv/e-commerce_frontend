@@ -95,6 +95,11 @@
   letter-spacing: 0px;
 }
 
+@mixin heading-four-regular {
+  @include heading-four;
+  font-weight: $weight-regular;
+}
+
 @mixin heading-four-medium {
   @include heading-four;
   font-weight: $weight-medium;

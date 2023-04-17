@@ -1,4 +1,5 @@
 @import "./variables.module";
+@import "./typography";
 @import "./responsive";
 
 html {
@@ -63,6 +64,14 @@ a {
   top: 0;
   left: 0;
   z-index: 99;
+}
+
+.info {
+  margin-top: 100px;
+  text-align: center;
+  color: $color-greyscale-black;
+
+  @include heading-three-semi-bold;
 }
 //************************************************//
 // SOME MEDIA FOR WIDTH AND HEIGHT                //

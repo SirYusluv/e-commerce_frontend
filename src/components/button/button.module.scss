@@ -55,5 +55,16 @@
         height: 2rem;
       }
     }
+
+    &--sec {
+      padding: 5px;
+      border: 2px solid $color-primary-lighter;
+      color: $color-greyscale-black;
+      background-color: transparent;
+
+      @include responsive($responsive-max-width, $width-mobile) {
+        border: 1px solid $color-primary-lighter;
+      }
+    }
   }
 }

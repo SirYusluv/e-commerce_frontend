@@ -3,14 +3,6 @@
 @import "@/styles/variables.module.scss";
 @import "@/styles/typography.scss";
 
-.info {
-  margin-top: 100px;
-  text-align: center;
-  color: $color-greyscale-black;
-
-  @include heading-three-semi-bold;
-}
-
 .main {
   padding: 5rem 10.2rem;
   display: flex;

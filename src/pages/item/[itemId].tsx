@@ -150,8 +150,8 @@ export default function ItemPage() {
     <>
       <ItemDetailNav title="Product detail" />
       {dialog}
-      {isLoading && <p className={styles.info}>Loading...</p>}
-      {!isLoading && !item && <p className={styles.info}>Item not found.</p>}
+      {isLoading && <p className="info">Loading...</p>}
+      {!isLoading && !item && <p className="info">Item not found.</p>}
 
       <main className={styles.main}>
         {content}
