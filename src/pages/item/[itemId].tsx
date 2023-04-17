@@ -8,15 +8,16 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import variables from "@/styles/variables.module.scss";
+import cartLogo from "@/assets/category-icons/cart.svg";
 import styles from "./item.module.scss";
 import useResponsive from "@/hooks/use-responsive";
 import ImageCtn from "@/components/item-details/image-ctn/image-ctn";
 import Info from "@/components/item-details/info/info";
 import Detail from "@/components/item-details/detail/detail";
+import Button from "@/components/button/button";
 
 export default function ItemPage() {
   const [item, setItem] = useState<IItemFromDb | null>(null);
-  //   const [content, setContent] = useState<JSX.Element | null>(null)
   const [dialog, setDialog] = useState<JSX.Element | null>(null);
   const router = useRouter();
   const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
@@ -34,7 +35,7 @@ export default function ItemPage() {
           image3={`${API_URL}/${item.images[2]}`}
         />
 
-        <div>
+        <div className={styles["detail__info"]}>
           <Info
             itemName={item.itemName}
             price={item.price}
@@ -44,6 +45,30 @@ export default function ItemPage() {
           />
           <Detail desc1={item.itemDescription1} desc2={item.itemDescription2} />
         </div>
+      </>
+    );
+  }
+
+  if (item && isTablet) {
+    content = (
+      <>
+        <div className={styles["main__top--tablet"]}>
+          <ImageCtn
+            image1={`${API_URL}/${item.images[0]}`}
+            image2={`${API_URL}/${item.images[1]}`}
+            image3={`${API_URL}/${item.images[2]}`}
+          />
+
+          <Info
+            itemName={item.itemName}
+            price={item.price}
+            remainingCount={item.remainingCount}
+            reviewCount={23}
+            stars={4}
+          />
+        </div>
+
+        <Detail desc1={item.itemDescription1} desc2={item.itemDescription2} />
       </>
     );
   }
@@ -83,12 +108,6 @@ export default function ItemPage() {
         return;
       }
 
-      if (response.status === HTTP_STATUS.ok) {
-        const items: IItemFromDb = (response.items as IItemFromDb[])[0];
-        setItem(items);
-        return;
-      }
-
       response.message &&
         setDialog(
           <AlertDialog
@@ -104,9 +123,28 @@ export default function ItemPage() {
             }}
           />
         );
+
+      if (response.status === HTTP_STATUS.ok) {
+        const items: IItemFromDb = ((response.items || []) as IItemFromDb[])[0];
+        items && setItem(items);
+        return;
+      }
     },
     [isLoading, errMsg, isError]
   );
+
+  function addItemToCart() {
+    sendRequest(`${API_URL}/cart/cart`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      body: {
+        itemId: item?._id || "",
+        quantity: "1",
+      },
+    });
+  }
 
   return (
     <>
@@ -115,7 +153,18 @@ export default function ItemPage() {
       {isLoading && <p className={styles.info}>Loading...</p>}
       {!isLoading && !item && <p className={styles.info}>Item not found.</p>}
 
-      <main>{content}</main>
+      <main className={styles.main}>
+        {content}
+        {!isLoading && item && (
+          <Button
+            extraClasses={styles.btn}
+            text="Add to cart"
+            image={cartLogo}
+            buttonClickHandler={addItemToCart}
+            buttonType="image-with-btn"
+          />
+        )}
+      </main>
     </>
   );
 }

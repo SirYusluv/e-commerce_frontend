@@ -45,8 +45,8 @@
       background-color: $color-primary-lighter;
 
       @include responsive($responsive-max-width, $width-tablet) {
-        width: 70rem;
-        height: 70rem;
+        width: 7rem;
+        height: 7rem;
       }
 
       &-active {

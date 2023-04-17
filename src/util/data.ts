@@ -7,7 +7,7 @@ export const ADDRESS_MIN_LENGTH = 2;
 
 export const ACCESS_TOKEN = "access_token";
 
-export const API_URL = "http://192.168.165.243:3000";
+export const API_URL = "http://192.168.234.243:3000";
 export const NAV_ITEMS = ["Home", "Items", "Contact Us"];
 
 export const HTTP_STATUS = {

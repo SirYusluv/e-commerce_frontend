@@ -4,15 +4,16 @@
 @import "@/styles/variables.module.scss";
 
 .details {
-  gap: 3rem;
+  gap: 2rem;
   @include flexColumn;
 
   @include responsive($responsive-max-width, $width-mobile) {
-    gap: 1.5rem;
+    gap: 1.3rem;
   }
 
   &__title {
     @include heading-two-medium;
+    color: $color-greyscale-black;
 
     @include responsive($responsive-max-width, $width-mobile) {
       @include heading-three-semi-bold;

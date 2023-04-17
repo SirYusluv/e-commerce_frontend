@@ -4,16 +4,16 @@
 @import "@/styles/typography.scss";
 
 .info {
-  gap: 3rem;
+  gap: 2rem;
   color: $color-greyscale-black;
   @include flexColumn;
 
   @include responsive($responsive-max-width, $width-tablet) {
-    gap: 2rem;
+    gap: 1.7rem;
   }
 
   @include responsive($responsive-max-width, $width-mobile) {
-    gap: 1.5rem;
+    gap: 0rem;
   }
 
   &__name {
@@ -39,14 +39,15 @@
   }
 
   &__review {
-    @include body-one-regular;
+    @include subtitle-one-medium;
 
     @include responsive($responsive-max-width, $width-mobile) {
-      @include body-two-regular;
+      @include subtitle-two-medium;
     }
   }
 
   &__price {
+    color: $color-greyscale-grey;
     @include subtitle-two-medium;
 
     @include responsive($responsive-max-width, $width-mobile) {
