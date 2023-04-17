@@ -14,11 +14,18 @@ import styles from "./cart-item.module.scss";
 interface IProp {
   id: string;
   quantity: number;
-  removeBtnOnClick: () => void;
-  editQtyBtnOnClick: (type: "add" | "reduce") => void;
+  removeBtnOnClick: (itemId: string, all: boolean) => void;
+  reduceBtnOnClick: (itemId: string, all: boolean) => void;
+  addBtnOnClick: (itemId: string) => void;
 }
 
-export default function CartItem({ id, quantity }: IProp) {
+export default function CartItem({
+  id,
+  quantity,
+  reduceBtnOnClick,
+  removeBtnOnClick,
+  addBtnOnClick,
+}: IProp) {
   const [item, setItem] = useState<IItemFromDb | null>(null);
   const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
   const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
@@ -82,6 +89,10 @@ export default function CartItem({ id, quantity }: IProp) {
             extraClasses={styles["cart-item__btn--remove"]}
             text={isMobile ? "" : "Remove"}
             image={removeIcon}
+            buttonClickHandler={() => {
+              removeBtnOnClick(id, true);
+              setItem(null);
+            }}
             buttonType="image-with-btn-sec"
           />
 
@@ -91,10 +102,14 @@ export default function CartItem({ id, quantity }: IProp) {
               imgExtraClasses={styles["cart-item__btn--reduce-img"]}
               text=""
               image={reduceIcon}
+              buttonClickHandler={() => {
+                reduceBtnOnClick(id, false);
+              }}
               buttonType="image-with-btn-sec"
             />
             <p className={styles["cart-item__btn--quantity"]}>{quantity}</p>
             <Button
+              buttonClickHandler={() => addBtnOnClick(id)}
               extraClasses={styles["cart-item__btn--add"]}
               text=""
               image={addIcon}

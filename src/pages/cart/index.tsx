@@ -76,6 +76,28 @@ export default function Cart() {
     [isLoading, errMsg, isError]
   );
 
+  function removeItemFromCart(itemId: string, all: boolean) {
+    sendRequest(`${API_URL}/cart/cart/${itemId}?all=${all}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+    });
+  }
+
+  function incrementItemInCart(itemId: string) {
+    sendRequest(`${API_URL}/cart/cart`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      body: {
+        itemId,
+        quantity: "1",
+      },
+    });
+  }
+
   return (
     <>
       <ItemDetailNav title="Orders" />
@@ -86,17 +108,44 @@ export default function Cart() {
       <main className={styles.cart}>
         <div className={styles["cart__item"]}>
           {cart?.length &&
-            cart.map(({ _id, itemId, quantity }) => (
+            cart.map(({ _id, itemId, quantity }, i) => (
               <CartItem
                 key={_id}
                 id={itemId}
                 quantity={quantity}
-                editQtyBtnOnClick={(type) => {}}
-                removeBtnOnClick={() => {}}
+                addBtnOnClick={(itemId) => {
+                  incrementItemInCart(itemId);
+                  if (cart.length) {
+                    setCart((cart) => {
+                      const newCart: ICartUndetailed[] = JSON.parse(
+                        JSON.stringify(cart)
+                      ) as ICartUndetailed[];
+                      //   const newCart = [...cart!!];
+                      newCart[i].quantity = newCart[i].quantity + 1;
+                      return [...newCart];
+                    });
+                  }
+                }}
+                removeBtnOnClick={removeItemFromCart}
+                reduceBtnOnClick={(itemId, all) => {
+                  removeItemFromCart(itemId, all);
+                  if (!all && cart.length) {
+                    setCart((cart) => {
+                      const newCart: ICartUndetailed[] = JSON.parse(
+                        JSON.stringify(cart)
+                      ) as ICartUndetailed[];
+                      //   const newCart = [...cart!!];
+                      newCart[i].quantity = newCart[i].quantity - 1;
+                      return [...newCart];
+                    });
+                  }
+                }}
               />
             ))}
         </div>
+
         {/* TODO: add pagination */}
+
         <div></div>
       </main>
     </>
