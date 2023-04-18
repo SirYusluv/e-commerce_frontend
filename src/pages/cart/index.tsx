@@ -105,13 +105,7 @@ export default function Cart() {
 
   // INFO: should be changed to route to checkout page
   function checkOutBtnClickHandler() {
-    sendRequest(`${API_URL}/order/order`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
-      },
-    });
-    setCart(null);
+    router.push("/checkout");
   }
 
   return (
