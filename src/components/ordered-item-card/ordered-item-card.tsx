@@ -1,5 +1,6 @@
 import { API_URL } from "@/util/data";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import styles from "./ordered-item-card.module.scss";
 
 export interface IOrderedItemCardProp {
@@ -13,12 +14,13 @@ export interface IOrderedItemCardProp {
 
 export default function OrderedItemCard({
   _id,
-  image,
   itemName,
   price,
   date,
   status,
 }: IOrderedItemCardProp) {
+  const router = useRouter();
+
   return (
     <div className={styles["cart-item"]}>
       {/* <div className={styles["cart-item__image--ctn"]}>
@@ -30,7 +32,10 @@ export default function OrderedItemCard({
         />
       </div> */}
 
-      <div className={styles["cart-item__detail"]}>
+      <div
+        className={styles["cart-item__detail"]}
+        onClick={() => router.push(`/receipt/${_id}`)}
+      >
         <div className={styles["cart-item__detail--1"]}>
           <p className={styles["cart-item__title"]}>{itemName}</p>
           <p className={styles["cart-item__price"]}>&#x20A6;{price}</p>

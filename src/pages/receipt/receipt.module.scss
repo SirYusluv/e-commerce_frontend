@@ -1,0 +1,76 @@
+@import "@/styles/mixins.scss";
+@import "@/styles/variables.module.scss";
+@import "@/styles/responsive.scss";
+@import "@/styles/typography.scss";
+
+.receipt {
+  padding: 5rem 10.2rem;
+  display: flex;
+  justify-content: space-between;
+
+  min-height: 100vh;
+
+  @include responsive($responsive-max-width, $width-tablet) {
+    padding: 5rem 2rem 5rem 5.1rem;
+    flex-direction: column;
+    gap: 10rem;
+  }
+
+  @include responsive($responsive-max-width, $width-mobile) {
+    padding: 4rem 1rem 4rem 1.8rem;
+    gap: 4rem;
+  }
+
+  &__content {
+    gap: 3rem;
+    @include flexColumn;
+  }
+
+  &__receipt {
+    margin: auto;
+    margin-top: 0;
+    border: 2px dashed $color-primary-light;
+    border-radius: 5px;
+    min-width: 30rem;
+    padding: 2.3rem;
+    justify-content: flex-start;
+    gap: 5rem;
+    background-color: $color-greyscale-light;
+
+    @include flexColumn;
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  &__underline {
+    height: 0.2rem;
+    width: 100%;
+    background-color: $color-primary-dark;
+    border-radius: 0.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__subject {
+    color: $color-primary-light;
+    @include subtitle-two-semi-bold;
+  }
+
+  &__value {
+    color: $color-greyscale-dark;
+    @include caption-regular;
+  }
+}

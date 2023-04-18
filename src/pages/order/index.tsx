@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./order.module.scss";
 
-interface IItemsForOrder {
+export interface IItemsForOrder {
   _id: string;
   itemId: string;
   itemName: string;
@@ -19,7 +19,7 @@ interface IItemsForOrder {
   quantity: number;
 }
 
-interface IOrderFromDb {
+export interface IOrderFromDb {
   _id: string;
   owner: string;
   paidBy: string;
