@@ -24,8 +24,6 @@ export default function Upload() {
         localStorage.removeItem(ACCESS_TOKEN);
         router.replace("/auth/signin");
       }
-
-      console.log(user);
     },
     [user]
   );

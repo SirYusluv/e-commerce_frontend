@@ -9,6 +9,7 @@ import useResponsive from "@/hooks/use-responsive";
 import LimitedInStock from "@/layouts/discover-page-sections/limited-in-stock/limited-in-stock";
 import Footer from "@/layouts/footer/footer";
 import MobileBottomNav from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
+import Head from "next/head";
 
 const itemsList: IItem[] = [
   {
@@ -45,18 +46,23 @@ export default function UserPage() {
   const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
 
   return (
-    <main className={styles["main-page"]}>
-      <UserNav />
-      <CategorySec />
-      <TopSellingItems
-        items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
-      />
-      <LimitedInStock
-        items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
-      />
-      {isMobile && <MobileBottomNav />}
-      <Footer />
-    </main>
+    <>
+      <Head>
+        <title>E-commerce</title>
+      </Head>
+      <main className={styles["main-page"]}>
+        <UserNav />
+        <CategorySec />
+        <TopSellingItems
+          items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
+        />
+        <LimitedInStock
+          items={isTablet ? [itemsList[0], itemsList[1]] : itemsList}
+        />
+        {isMobile && <MobileBottomNav />}
+        <Footer />
+      </main>
+    </>
   );
 }
 

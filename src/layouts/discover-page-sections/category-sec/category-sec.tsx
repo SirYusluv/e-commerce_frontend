@@ -67,7 +67,7 @@ const categories: ICategory[] = [
 const itemsList: IItem[] = [
   {
     id: "0",
-    itemName: "Casual sweater",
+    name: "Casual sweater",
     image: casualSweater,
     price: 773,
     remainingCount: 3,
@@ -76,7 +76,7 @@ const itemsList: IItem[] = [
   },
   {
     id: "1",
-    itemName: "Casual sweater",
+    name: "Casual sweater",
     image: casualSweater,
     price: 773,
     remainingCount: 3,
