@@ -20,7 +20,6 @@ import { useDispatch } from "react-redux";
 import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
 import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
-import { useRouter } from "next/router";
 
 export interface ICategory {
   icon: StaticImageData;
@@ -100,15 +99,9 @@ export default function CategorySec({ supermarketItems }: IProps) {
   const [searchedCategory, setSearchedCategory] = useState<string>("");
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
   const dispatch = useDispatch();
-  const router = useRouter();
   const [sendRequest, reset, isLoading, isError, errMsg, response] =
     useRequest();
   const [Modal, setModal] = useState<JSX.Element | null>(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem(ACCESS_TOKEN);
-    !token && router.replace("/auth/signin");
-  }, []);
 
   useEffect(
     function () {

@@ -26,6 +26,11 @@ export default function Cart() {
   let total = 15000; // some dummy price
 
   useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
+
+  useEffect(() => {
     sendRequest(`${API_URL}/cart/cart`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,

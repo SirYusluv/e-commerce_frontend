@@ -5,6 +5,7 @@ import ItemDetailNav from "@/layouts/nav/item-detail-nav/item-detail-nav";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { IOrderFromDb } from "../order";
@@ -13,8 +14,14 @@ import styles from "./receipt.module.scss";
 export default function Receipt() {
   const [orders, setOrders] = useState<IOrderFromDb[] | null>(null);
   const [dialog, setDialog] = useState<JSX.Element | null>(null);
+  const router = useRouter();
   const dispatch = useDispatch();
   const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
 
   useEffect(() => {
     sendRequest(`${API_URL}/order/receipts`, {

@@ -26,6 +26,11 @@ export default function ItemPage() {
 
   let content: JSX.Element | null = null;
 
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
+
   if (item) {
     content = (
       <>

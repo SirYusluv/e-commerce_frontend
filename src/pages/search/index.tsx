@@ -30,6 +30,11 @@ export default function Seaarch() {
   const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
   const itemsToShowCount = isTablet ? 10 : 9;
 
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
+
   useEffect(function () {
     if (!window.location.search?.split("query=")[1]) {
       router.replace("/user");

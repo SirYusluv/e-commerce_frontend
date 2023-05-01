@@ -6,7 +6,7 @@ import ItemDetailNav from "@/layouts/nav/item-detail-nav/item-detail-nav";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import { ACCESS_TOKEN, API_URL } from "@/util/data";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./checkout.module.scss";
 
@@ -19,6 +19,11 @@ export default function Checkout() {
   const cvvRef = useRef<HTMLInputElement | null>(null);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
 
   function payBtnClickHandler() {
     if (isLoading) return;

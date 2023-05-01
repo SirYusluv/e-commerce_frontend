@@ -10,7 +10,9 @@ import LimitedInStock from "@/layouts/discover-page-sections/limited-in-stock/li
 import Footer from "@/layouts/footer/footer";
 import MobileBottomNav from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 import Head from "next/head";
-import { API_URL, SAMPLE_TOKEN } from "@/util/data";
+import { ACCESS_TOKEN, API_URL, SAMPLE_TOKEN } from "@/util/data";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const itemsList: IItem[] = [
   {
@@ -53,8 +55,14 @@ export default function UserPage({
   topSellingItems,
   limitedInStockItems,
 }: IProps) {
+  const router = useRouter();
   const isTablet = useResponsive(`(max-width: ${variables.widthTablet})`);
   const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
 
   return (
     <>

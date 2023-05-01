@@ -36,6 +36,11 @@ export default function Order() {
   const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
 
   useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
+
+  useEffect(() => {
     sendRequest(`${API_URL}/order/receipts`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,

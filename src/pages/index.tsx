@@ -1,5 +1,5 @@
 import { ILimitedItem } from "@/layouts/section-limited/section-limited";
-import { API_URL } from "@/util/data";
+import { ACCESS_TOKEN, API_URL } from "@/util/data";
 import Homepage from "./homepage";
 import bag from "@/assets/bg-bag.png";
 import nike from "@/assets/bg-nike.png";
@@ -10,6 +10,8 @@ import gown from "@/assets/items images/gown.png";
 import mensPolo from "@/assets/items images/mens polo 6 set.png";
 import plainWhiteRoundNeck from "@/assets/items images/plain white roundneck.png";
 import womensPolo from "@/assets/items images/womens polo.png";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const dummyLimited: [ILimitedItem, ILimitedItem, ILimitedItem] = [
   {
@@ -89,6 +91,13 @@ interface IProp {
 }
 
 export default function Home({ limited, menCategory }: IProp) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
+
   return <Homepage category={menCategory} limited={limited} />;
 }
 
