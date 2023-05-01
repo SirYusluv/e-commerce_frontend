@@ -61,12 +61,24 @@ export default function UserNav() {
             text="Cart"
             icon={cart}
             iconExtraClasses={styles["nav__actions--image"]}
+            clickHandler={() => {
+              router.push("/cart");
+            }}
           />
         </div>
       )}
 
       {isMobile && (
-        <Image alt="Cart" src={cart} width="22.84" height="25" sizes="22.84" />
+        <Image
+          alt="Cart"
+          src={cart}
+          width="22.84"
+          height="25"
+          sizes="22.84"
+          onClick={() => {
+            router.push("/cart");
+          }}
+        />
       )}
     </nav>
   );
