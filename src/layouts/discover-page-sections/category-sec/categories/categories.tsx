@@ -5,12 +5,15 @@ import styles from "./categories.module.scss";
 
 interface IProp {
   categories: ICategory[];
+  activeCategoryIndex: number;
   onCategoryClick: (category: string) => void;
 }
 
-export default function Categories({ categories, onCategoryClick }: IProp) {
-  const [activeCategoryIndex, setActiveCategoryIndex] = useState<number>(0);
-
+export default function Categories({
+  categories,
+  activeCategoryIndex,
+  onCategoryClick,
+}: IProp) {
   return (
     <div className={styles.categories}>
       <div className={styles["categories__category--ctn"]}>
@@ -25,7 +28,6 @@ export default function Categories({ categories, onCategoryClick }: IProp) {
             text={text}
             key={i}
             clickHandler={(category) => {
-              setActiveCategoryIndex(i);
               category && onCategoryClick(category);
             }}
           />

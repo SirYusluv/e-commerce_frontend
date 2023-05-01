@@ -1,5 +1,5 @@
 import Item, { IItem } from "@/components/item/item";
-// import variables from "@/styles/variables.module.scss";
+import { useRouter } from "next/router";
 import styles from "./items.module.scss";
 
 interface IProps {
@@ -8,6 +8,8 @@ interface IProps {
 }
 
 export default function Items({ items, itemsIsLoading }: IProps) {
+  const router = useRouter();
+
   return (
     <div className={`${styles.items} ${itemsIsLoading ? "low-opacity" : ""}`}>
       {items.map(
@@ -20,6 +22,9 @@ export default function Items({ items, itemsIsLoading }: IProps) {
             image={image}
             reviewCount={reviewCount}
             stars={stars}
+            onItemClick={() => {
+              router.push(`/item/${id}`);
+            }}
             key={id}
           />
         )

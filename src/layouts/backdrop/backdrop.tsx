@@ -18,8 +18,6 @@ export default function Backdrop({ onBackdropClick }: IPops) {
     (state: RootState) => state.backdrop.showBackdrop
   );
 
-  console.log(showBackdrop);
-
   useEffect(
     function () {
       if (showBackdrop) {

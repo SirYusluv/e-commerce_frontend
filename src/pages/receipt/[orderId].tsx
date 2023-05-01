@@ -85,7 +85,6 @@ export default function Receipt() {
       quantity += q;
     });
   }
-  console.log(ordersToDisplay);
 
   return (
     <>

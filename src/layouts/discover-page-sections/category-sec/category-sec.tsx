@@ -12,9 +12,15 @@ import phone from "@/assets/category-icons/phone.png";
 import clothe from "@/assets/category-icons/supermarket.png";
 import casualSweater from "@/assets/items images/casual sweater.png";
 import { StaticImageData } from "next/image";
-import { useState } from "react";
-import { IItem } from "@/components/item/item";
+import { useEffect, useState } from "react";
+import { IItem, IItemFromDb } from "@/components/item/item";
 import styles from "./category-sec.module.scss";
+import useRequest, { IOption } from "@/hooks/use-http";
+import { useDispatch } from "react-redux";
+import { ACCESS_TOKEN, API_URL, HTTP_STATUS } from "@/util/data";
+import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
+import { hideBackdrop } from "@/store/slices/backdrop-slice";
+import { useRouter } from "next/router";
 
 export interface ICategory {
   icon: StaticImageData;
@@ -85,25 +91,112 @@ const itemsList: IItem[] = [
   },
 ];
 
-export default function CategorySec() {
-  const [items, setItems] = useState<IItem[]>(itemsList);
-  const [itemsIsLoading, setItemsIsLoading] = useState<boolean>(false);
+interface IProps {
+  supermarketItems: IItem[];
+}
 
-  function categoryClickHandler(_: string) {
-    setItemsIsLoading(true);
-    setTimeout(() => {
-      setItemsIsLoading(false);
-      setItems((prevItems) => [...prevItems]);
-    }, 1000);
+export default function CategorySec({ supermarketItems }: IProps) {
+  const [items, setItems] = useState<IItem[]>(supermarketItems);
+  const [searchedCategory, setSearchedCategory] = useState<string>("");
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const [sendRequest, reset, isLoading, isError, errMsg, response] =
+    useRequest();
+  const [Modal, setModal] = useState<JSX.Element | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem(ACCESS_TOKEN);
+    !token && router.replace("/auth/signin");
+  }, []);
+
+  useEffect(
+    function () {
+      if (isLoading) return;
+
+      if (isError || errMsg)
+        return setModal(
+          <AlertDialog
+            message={errMsg || "Error processing request."}
+            buttonPri="Ok"
+            onButtonPriClick={removeModalAndBackdrop}
+            backdropClickHandler={removeModalAndBackdrop}
+          />
+        );
+
+      // we need at least 2 items
+      if (response.items?.length > 1) {
+        const convertedItems: IItem[] = [];
+        const fetchedItems: IItemFromDb[] = response.items;
+
+        for (let i = 0; i < 2; i++) {
+          const fetchedItem: IItem = {
+            id: fetchedItems[i]._id,
+            name: fetchedItems[i].itemName,
+            image: `${API_URL}/${fetchedItems[i].images[0]}`,
+            price: fetchedItems[i].price,
+            remainingCount: fetchedItems[i].remainingCount,
+            reviewCount: Math.floor(Math.random() * 100) + 1,
+            stars: Math.floor(Math.random() * 4) + 2, // random number from 2 - 5
+          };
+          convertedItems.push(fetchedItem);
+        }
+
+        setActiveCategory();
+        setItems(convertedItems);
+
+        return;
+      }
+
+      setModal(
+        <AlertDialog
+          message={response.message || "Items not found."}
+          buttonPri="Ok"
+          onButtonPriClick={removeModalAndBackdrop}
+          backdropClickHandler={removeModalAndBackdrop}
+        />
+      );
+    },
+    [isLoading, isError, errMsg, response.message]
+  );
+
+  function removeModalAndBackdrop() {
+    setModal(null);
+    dispatch(hideBackdrop());
+  }
+
+  function setActiveCategory() {
+    setActiveCategoryIndex(
+      categories.findIndex(({ text }) => text === searchedCategory)
+    );
+  }
+
+  function categoryClickHandler(category: string) {
+    setSearchedCategory(category);
+    const options: IOption = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem(ACCESS_TOKEN)}`,
+      },
+      body: {
+        category,
+      },
+    };
+    sendRequest(`${API_URL}/item/items?limit=2`, options);
   }
 
   return (
-    <section className={styles["category-sec"]}>
-      <Categories
-        categories={categories}
-        onCategoryClick={categoryClickHandler}
-      />
-      <Items items={items} itemsIsLoading={itemsIsLoading} />
-    </section>
+    <>
+      {Modal}
+      <section className={styles["category-sec"]}>
+        <Categories
+          categories={categories}
+          activeCategoryIndex={activeCategoryIndex}
+          onCategoryClick={categoryClickHandler}
+        />
+        <Items items={items} itemsIsLoading={isLoading} />
+      </section>
+    </>
   );
 }

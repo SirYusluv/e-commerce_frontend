@@ -31,6 +31,7 @@ export interface IItem {
 
 interface IItemExtended extends IItem {
   whiteBg?: boolean;
+  onItemClick?: () => void;
 }
 
 export default function Item({
@@ -41,9 +42,15 @@ export default function Item({
   stars,
   image,
   whiteBg,
+  onItemClick,
 }: IItemExtended) {
   return (
-    <div className={`link ${styles.item}`}>
+    <div
+      className={`link ${styles.item}`}
+      onClick={() => {
+        onItemClick && onItemClick();
+      }}
+    >
       <div
         className={`${styles["item__image--bg"]} ${
           whiteBg && styles["item__image--bg-white"]

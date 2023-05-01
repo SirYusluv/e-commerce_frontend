@@ -6,8 +6,11 @@ export const NAME_MAX_LENGTH = 15;
 export const ADDRESS_MIN_LENGTH = 2;
 
 export const ACCESS_TOKEN = "access_token";
+export const SAMPLE_TOKEN =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFjMzcxYTUzZGE1YTE1Njg0YWE5M2YiLCJlbWFpbEFkZHJlc3MiOiJidUBnbWFpbC5jb20iLCJhY2NvdW50VHlwZSI6IlNBTEVTIiwiaWF0IjoxNjgyNzg2NTUyfQ.ikfRMQWM6bVGQZFLaGoNfIF-aFgmNifhkx1erhykWAk";
 
-export const API_URL = "http://127.0.0.1:3000";
+// INFO: make sure to always change this to the backend address and also add to nextConfig
+export const API_URL = "http://192.168.239.243:3000";
 export const NAV_ITEMS = ["Home", "Items", "Contact Us"];
 
 export const HTTP_STATUS = {
