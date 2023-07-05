@@ -10,7 +10,7 @@ export const SAMPLE_TOKEN =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFjMzcxYTUzZGE1YTE1Njg0YWE5M2YiLCJlbWFpbEFkZHJlc3MiOiJidUBnbWFpbC5jb20iLCJhY2NvdW50VHlwZSI6IlNBTEVTIiwiaWF0IjoxNjgyNzg2NTUyfQ.ikfRMQWM6bVGQZFLaGoNfIF-aFgmNifhkx1erhykWAk";
 
 // INFO: make sure to always change this to the backend address and also add to nextConfig
-export const API_URL = "http://192.168.239.243:3000";
+export const API_URL = "https://ecommerce-umdh.onrender.com";
 export const NAV_ITEMS = ["Home", "Items", "Contact Us"];
 
 export const HTTP_STATUS = {

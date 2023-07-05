@@ -149,6 +149,12 @@ export async function getStaticProps() {
     limited = dummyItems;
   }
 
+  console.log("\n\n\n")
+  console.log(limited)
+  console.log("\n\n")
+  console.log(menCategory)
+  console.log("\n\n\n")
+
   return {
     props: {
       limited,
