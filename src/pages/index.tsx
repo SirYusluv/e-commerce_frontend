@@ -1,6 +1,6 @@
 import { ILimitedItem } from "@/layouts/section-limited/section-limited";
 import { ACCESS_TOKEN, API_URL } from "@/util/data";
-import Homepage from "./homepage";
+import Homepage from "../layouts/homepage";
 import bag from "@/assets/bg-bag.png";
 import nike from "@/assets/bg-nike.png";
 import { IItem, IItemFromDb } from "@/components/item/item";
