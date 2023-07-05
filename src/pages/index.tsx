@@ -93,11 +93,6 @@ interface IProp {
 export default function Home({ limited, menCategory }: IProp) {
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem(ACCESS_TOKEN);
-    !token && router.replace("/auth/signin");
-  }, []);
-
   return <Homepage category={menCategory} limited={limited} />;
 }
 
