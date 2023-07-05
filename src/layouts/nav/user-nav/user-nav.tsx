@@ -23,7 +23,8 @@ export default function UserNav() {
 
     if (!query) return;
 
-    router.push(`/search?query=${query.toLowerCase()}`);
+    // router.push(`/search?query=${query.toLowerCase()}`);
+    router.push(`/search?query=${query}`);
     searchInputRef.current.value = "";
   }
 

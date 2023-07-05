@@ -141,14 +141,15 @@ export default function CategorySec({ supermarketItems }: IProps) {
         return;
       }
 
-      setModal(
-        <AlertDialog
-          message={response.message || "Items not found."}
-          buttonPri="Ok"
-          onButtonPriClick={removeModalAndBackdrop}
-          backdropClickHandler={removeModalAndBackdrop}
-        />
-      );
+      response.message &&
+        setModal(
+          <AlertDialog
+            message={response.message}
+            buttonPri="Ok"
+            onButtonPriClick={removeModalAndBackdrop}
+            backdropClickHandler={removeModalAndBackdrop}
+          />
+        );
     },
     [isLoading, isError, errMsg, response.message]
   );

@@ -14,6 +14,7 @@ import { ACCESS_TOKEN, API_URL, SAMPLE_TOKEN } from "@/util/data";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
+// dummy list
 const itemsList: IItem[] = [
   {
     id: "0",

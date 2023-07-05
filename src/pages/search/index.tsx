@@ -130,7 +130,7 @@ export default function Seaarch() {
         <main className={styles.main}>
           <div className={`${styles.items} ${isLoading ? "low-opacity" : ""}`}>
             {items?.length &&
-              items.map(({ _id, itemName, remainingCount, price }) => (
+              items.map(({ _id, itemName, remainingCount, price, images }) => (
                 <Link key={_id} href={`/item/${_id}`}>
                   <Item
                     id={_id}
@@ -139,7 +139,7 @@ export default function Seaarch() {
                     remainingCount={remainingCount}
                     reviewCount={23}
                     stars={4}
-                    image={dummyImage}
+                    image={`${API_URL}/${images[0]}`}
                   />
                 </Link>
               ))}

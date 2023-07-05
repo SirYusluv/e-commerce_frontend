@@ -13,7 +13,7 @@ interface IProp {
 }
 
 // TODO: put sava functionality
-export default function ({
+export default function Info({
   itemName,
   stars,
   price,

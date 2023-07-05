@@ -117,6 +117,8 @@ export async function getStaticProps() {
         image: images[0],
         remainingCount,
       }));
+    } else {
+      limited = dummyLimited;
     }
   } else {
     limited = dummyLimited;
@@ -144,16 +146,12 @@ export async function getStaticProps() {
           stars: Math.floor(Math.random() * 4) + 2, // random number from 2 - 5
         })
       );
+    } else {
+      menCategory = dummyItems;
     }
   } else {
-    limited = dummyItems;
+    menCategory = dummyItems;
   }
-
-  console.log("\n\n\n")
-  console.log(limited)
-  console.log("\n\n")
-  console.log(menCategory)
-  console.log("\n\n\n")
 
   return {
     props: {

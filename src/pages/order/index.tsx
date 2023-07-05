@@ -128,6 +128,7 @@ export default function Order() {
         {ordersToDisplay.map(
           ({ _id, date, image, itemName, price, status }) => (
             <OrderedItemCard
+              key={_id}
               _id={_id}
               date={date}
               image={image}

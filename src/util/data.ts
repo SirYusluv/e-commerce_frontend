@@ -7,7 +7,7 @@ export const ADDRESS_MIN_LENGTH = 2;
 
 export const ACCESS_TOKEN = "access_token";
 export const SAMPLE_TOKEN =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDFjMzcxYTUzZGE1YTE1Njg0YWE5M2YiLCJlbWFpbEFkZHJlc3MiOiJidUBnbWFpbC5jb20iLCJhY2NvdW50VHlwZSI6IlNBTEVTIiwiaWF0IjoxNjgyNzg2NTUyfQ.ikfRMQWM6bVGQZFLaGoNfIF-aFgmNifhkx1erhykWAk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGE1NDhkNjlmYTgwMjA1M2IyZmQ3YzAiLCJlbWFpbEFkZHJlc3MiOiJ0ZXN0QHRlc3QuY29tIiwiYWNjb3VudFR5cGUiOiJVU0VSIiwiaWF0IjoxNjg4NTkzMTM5fQ.HI2Z8_jjDva4o12S6Iw9pOD0rD9v_R5sM8KHYc9CMRA";
 
 // INFO: make sure to always change this to the backend address and also add to nextConfig
 export const API_URL = "https://ecommerce-umdh.onrender.com";

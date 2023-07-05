@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./mobile-nav.module.scss";
 
-export default function () {
+export default function MobileNav() {
   const dispatch = useDispatch();
 
   useEffect(() => {

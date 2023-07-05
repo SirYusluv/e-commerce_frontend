@@ -5,6 +5,8 @@ import { useState } from "react";
 import Item, { IItem } from "@/components/item/item";
 import { API_URL } from "@/util/data";
 
+import nike from "@/assets/bg-nike.png";
+
 interface IProps {
   categories: [string, string, string, string, string];
   items: IItem[];
@@ -57,7 +59,9 @@ export default function SectionItems({
                 key={id}
                 id={id}
                 name={name}
-                image={`${API_URL}/${image}`}
+                image={
+                  typeof image === "string" ? `${API_URL}/${image}` : image
+                }
                 price={price}
                 remainingCount={remainingCount}
                 reviewCount={reviewCount}

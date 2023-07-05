@@ -6,6 +6,8 @@ import Image, { StaticImageData } from "next/image";
 import ItemCurvedCtn from "@/components/item-curved-ctn/item-curved-ctn";
 import { API_URL } from "@/util/data";
 
+import nike from "@/assets/bg-nike.png";
+
 export interface ILimitedItem {
   image: StaticImageData | string;
   remainingCount: number;
@@ -32,7 +34,11 @@ export default function SectionLimited({ limitedItems }: IProp) {
           <div className={styles["item__image-ctn"]}>
             <Image
               alt="Shoe"
-              src={`${API_URL}/${limitedItems[0].image}`}
+              src={
+                typeof limitedItems[1].image === "string"
+                  ? `${API_URL}/${limitedItems[0].image}`
+                  : limitedItems[0].image
+              }
               sizes={`(max-width: ${variables.widthMobile}) 185px,
           218px`}
               fill
@@ -48,7 +54,11 @@ export default function SectionLimited({ limitedItems }: IProp) {
             <div className={styles["item__image-ctn"]}>
               <Image
                 alt="Shoe"
-                src={`${API_URL}/${limitedItems[1].image}`}
+                src={
+                  typeof limitedItems[1].image === "string"
+                    ? `${API_URL}/${limitedItems[1].image}`
+                    : limitedItems[1].image
+                }
                 sizes={`(max-width: ${variables.widthMobile}) 185px,
           218px`}
                 fill
@@ -63,7 +73,11 @@ export default function SectionLimited({ limitedItems }: IProp) {
             <div className={styles["item__image-ctn"]}>
               <Image
                 alt="Shoe"
-                src={`${API_URL}/${limitedItems[2].image}`}
+                src={
+                  typeof limitedItems[2].image === "string"
+                    ? `${API_URL}/${limitedItems[2].image}`
+                    : limitedItems[2].image
+                }
                 sizes={`(max-width: ${variables.widthMobile}) 185px,
           218px`}
                 fill
@@ -84,7 +98,11 @@ export default function SectionLimited({ limitedItems }: IProp) {
           <Image
             className={styles["item__image"]}
             alt="Shoe"
-            src={`${API_URL}/${item.image}`}
+            src={
+              typeof item.image === "string"
+                ? `${API_URL}/${item.image}`
+                : item.image
+            }
             sizes={`(max-width: ${variables.widthMobile}) 185px,
         218px`}
             fill
