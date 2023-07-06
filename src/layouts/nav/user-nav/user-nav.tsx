@@ -1,7 +1,7 @@
 import Image from "next/image";
 import ecommerceLogo from "@/assets/logo.svg";
 import Search from "@/components/search/search";
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import useResponsive from "@/hooks/use-responsive";
 import variables from "@/styles/variables.module.scss";
 import IconAndText from "@/components/icon-and-text/icon-and-text";
@@ -10,8 +10,10 @@ import account from "@/assets/category-icons/account.svg";
 import dropDownArrow from "@/assets/category-icons/drop down arrow.svg";
 import styles from "./user-nav.module.scss";
 import { useRouter } from "next/router";
+import DesktopDropDown from "@/components/desktop-drop-down/desktop-drop-down";
 
 export default function UserNav() {
+  const [showDropDown, setShowDropDown] = useState<boolean>(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
@@ -43,7 +45,12 @@ export default function UserNav() {
 
       {!isMobile && (
         <div className={styles["nav__actions"]}>
-          <div className={styles["nav__account--ctn"]}>
+          <div
+            className={styles["nav__account--ctn"]}
+            onClick={() =>
+              setShowDropDown((prevShowDropDown) => !prevShowDropDown)
+            }
+          >
             <IconAndText
               text="Account"
               icon={account}
@@ -55,7 +62,15 @@ export default function UserNav() {
               width="20"
               height="12.35"
               sizes="20px"
+              className="link"
             />
+
+            <div className={styles["nav__account--drop-down"]}>
+              <DesktopDropDown
+                showDropDown={showDropDown}
+                setShowDropDown={setShowDropDown}
+              />
+            </div>
           </div>
 
           <IconAndText

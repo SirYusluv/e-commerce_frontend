@@ -53,10 +53,19 @@
       display: flex;
       align-items: center;
       gap: 2rem;
+      position: relative;
 
       @include responsive($responsive-max-width, $width-tablet) {
         gap: 1rem;
       }
+    }
+
+    &--drop-down {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 100%);
+      z-index: 1;
     }
   }
 }

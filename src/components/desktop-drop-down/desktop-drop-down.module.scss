@@ -1,0 +1,15 @@
+@import "@/styles/variables.module.scss";
+@import "@/styles/typography.scss";
+@import "@/styles/mixins.scss";
+
+.drop-down {
+  @include body-one-bold;
+  @include flexColumn;
+
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+
+  background-color: $color-greyscale-white;
+  border: 1px solid $color-primary-dark;
+}
