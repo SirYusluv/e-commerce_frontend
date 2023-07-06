@@ -108,7 +108,7 @@ export default function ForgetPassword() {
           <Button
             type="submit"
             buttonType="main"
-            text="Signup"
+            text="Forget Password"
             isActive={!isLoading}
           />
         </form>
@@ -118,12 +118,6 @@ export default function ForgetPassword() {
             className={styles["bottom__signup"]}
           >
             Don't have an account? <span> Signup</span>
-          </p>
-          <p
-            onClick={() => router.push(`/auth/signin`)}
-            className={styles["bottom__signin"]}
-          >
-            Signin
           </p>
         </div>
       </main>

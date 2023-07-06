@@ -120,7 +120,12 @@ export default function Signin() {
             inputType="password"
             inputRef={passwordRef}
           />
-          <Button type="submit" buttonType="main" text="Signin" />
+          <Button
+            type="submit"
+            buttonType="main"
+            text="Signin"
+            isActive={!isLoading}
+          />
         </form>
         <div className={styles["bottom"]}>
           <p className={styles["bottom__account"]}>

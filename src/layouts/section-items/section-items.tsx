@@ -6,6 +6,7 @@ import Item, { IItem } from "@/components/item/item";
 import { API_URL } from "@/util/data";
 
 import nike from "@/assets/bg-nike.png";
+import { useRouter } from "next/router";
 
 interface IProps {
   categories: [string, string, string, string, string];
@@ -21,6 +22,7 @@ export default function SectionItems({
   dataIsLoading,
 }: IProps) {
   const [activeBtnIndex, setActiveBtnIndex] = useState<number>(0);
+  const router = useRouter();
 
   return (
     <SecLayScaffold
@@ -67,6 +69,9 @@ export default function SectionItems({
                 reviewCount={reviewCount}
                 stars={stars}
                 whiteBg={i % 2 === 0 ? false : true}
+                onItemClick={() => {
+                  router.push(`/item/${id}`);
+                }}
               />
             )
           )}

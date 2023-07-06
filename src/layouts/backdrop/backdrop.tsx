@@ -32,7 +32,13 @@ export default function Backdrop({ onBackdropClick }: IPops) {
     <></>
   ) : (
     createPortal(
-      <div className={styles.backdrop} onClick={onBackdropClick}></div>,
+      <div
+        className={styles.backdrop}
+        onClick={() => {
+          removeBDStyleFromBD();
+          onBackdropClick();
+        }}
+      ></div>,
       document.getElementById("backdrop")!!
     )
   );

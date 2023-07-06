@@ -3,7 +3,7 @@
 @import "@/styles/responsive.scss";
 @import "@/styles/typography.scss";
 
-.cart {
+.orders {
   padding: 5rem 10.2rem;
   gap: 4rem;
   @include flexColumn;
@@ -11,15 +11,9 @@
   @include responsive($responsive-max-width, $width-tablet) {
     padding: 5rem 2rem 5rem 5.1rem;
     flex-direction: column;
-    gap: 10rem;
   }
 
   @include responsive($responsive-max-width, $width-mobile) {
     padding: 4rem 1rem 4rem 1.8rem;
-  }
-
-  &__item {
-    gap: 3rem;
-    @include flexColumn;
   }
 }

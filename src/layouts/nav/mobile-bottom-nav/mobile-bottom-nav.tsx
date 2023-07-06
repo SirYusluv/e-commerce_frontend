@@ -9,6 +9,9 @@ import BottomNavItem, {
 import { useState } from "react";
 import styles from "./mobile-bottom-nav.module.scss";
 import { useRouter } from "next/router";
+import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
+import { useDispatch } from "react-redux";
+import { hideBackdrop } from "@/store/slices/backdrop-slice";
 
 export const bottomNavItems: IBottomNavItem[] = [
   {
@@ -41,10 +44,17 @@ interface IProp {
 export default function MobileBottomNav({ isActiveIndex }: IProp) {
   const [bottomNavActiveIndex, setBottomNavActiveIndex] =
     useState<number>(isActiveIndex);
+  const [Modal, setModal] = useState<JSX.Element | null>(null);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   function bottomItemClickHandler(i: number) {
     setBottomNavActiveIndex(i);
+  }
+
+  function removeModalAndBackdrop() {
+    dispatch(hideBackdrop());
+    setModal(null);
   }
 
   function changeView(routeName: ButtomNavItemText) {
@@ -58,26 +68,39 @@ export default function MobileBottomNav({ isActiveIndex }: IProp) {
       case "Account":
         router.push("/account");
         break;
+      // I've not implemented saved feature
       case "Saved":
+        setModal(
+          <AlertDialog
+            message={"You dont have any saved item."}
+            buttonPri="Ok"
+            onButtonPriClick={removeModalAndBackdrop}
+            backdropClickHandler={removeModalAndBackdrop}
+          />
+        );
+        break;
       default:
         break;
     }
   }
 
   return (
-    <div className={styles["bottom-nav"]}>
-      {bottomNavItems.map(({ icon, text }, i) => (
-        <BottomNavItem
-          isActive={i === bottomNavActiveIndex ? true : false}
-          icon={icon}
-          text={text}
-          clickHandler={() => {
-            setBottomNavActiveIndex(i);
-            changeView(text);
-          }}
-          key={i}
-        />
-      ))}
-    </div>
+    <>
+      {Modal && Modal}
+      <div className={styles["bottom-nav"]}>
+        {bottomNavItems.map(({ icon, text }, i) => (
+          <BottomNavItem
+            isActive={i === bottomNavActiveIndex ? true : false}
+            icon={icon}
+            text={text}
+            clickHandler={() => {
+              setBottomNavActiveIndex(i);
+              changeView(text);
+            }}
+            key={i}
+          />
+        ))}
+      </div>
+    </>
   );
 }

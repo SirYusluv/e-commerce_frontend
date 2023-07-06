@@ -130,7 +130,7 @@ export default function Order() {
         <p className="info">No order has been made.</p>
       )}
 
-      <main className={`${styles.cart} link`}>
+      <main className={`${styles.orders} link`}>
         {ordersToDisplay.map(
           ({ _id, date, image, itemName, price, status }) => (
             <OrderedItemCard

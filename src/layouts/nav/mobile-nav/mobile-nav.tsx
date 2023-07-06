@@ -1,5 +1,5 @@
 import XButton from "@/components/x-button/x-button";
-import Backdrop from "@/layouts/backdrop/backdrop";
+import Backdrop, { removeBDStyleFromBD } from "@/layouts/backdrop/backdrop";
 import { hideBackdrop, showBackdrop } from "@/store/slices/backdrop-slice";
 import { hideNav } from "@/store/slices/mobile-nav-slice";
 import { NAV_ITEMS } from "@/util/data";
@@ -15,6 +15,7 @@ export default function MobileNav() {
   }, []);
 
   function closeMobileNav() {
+    removeBDStyleFromBD();
     dispatch(hideNav());
     dispatch(hideBackdrop());
   }

@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import Item, { IItem } from "../item/item";
 import styles from "./item-and-title-pack.module.scss";
 
@@ -7,6 +8,8 @@ interface IProp {
 }
 
 export default function ItemAndTitlePack({ items, title }: IProp) {
+  const router = useRouter();
+
   return (
     <section className={styles.pack}>
       <div className={styles["pack__bg"]}></div>
@@ -36,6 +39,9 @@ export default function ItemAndTitlePack({ items, title }: IProp) {
               reviewCount={reviewCount}
               stars={stars}
               key={i}
+              onItemClick={() => {
+                router.push(`/item/${id}`);
+              }}
             />
           )
         )}

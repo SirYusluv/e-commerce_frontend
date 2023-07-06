@@ -74,6 +74,10 @@ a {
   @include heading-three-semi-bold;
 }
 
+.button-loading {
+  background-color: $color-greyscale-grey;
+}
+
 //************************************************//
 // SOME MEDIA FOR WIDTH AND HEIGHT                //
 //************************************************//
