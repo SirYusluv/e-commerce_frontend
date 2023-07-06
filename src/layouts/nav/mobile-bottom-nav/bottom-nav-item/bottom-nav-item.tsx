@@ -2,8 +2,10 @@ import { StaticImageData } from "next/image";
 import Image from "next/image";
 import styles from "./bottom-nav-item.module.scss";
 
+export type ButtomNavItemText = "Home" | "Saved" | "Orders" | "Account";
+
 export interface IBottomNavItem {
-  text: string;
+  text: ButtomNavItemText;
   icon: StaticImageData;
 }
 

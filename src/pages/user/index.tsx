@@ -8,7 +8,9 @@ import styles from "./user.module.scss";
 import useResponsive from "@/hooks/use-responsive";
 import LimitedInStock from "@/layouts/discover-page-sections/limited-in-stock/limited-in-stock";
 import Footer from "@/layouts/footer/footer";
-import MobileBottomNav from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
+import MobileBottomNav, {
+  getButtomNavItemIndex,
+} from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 import Head from "next/head";
 import { ACCESS_TOKEN, API_URL, SAMPLE_TOKEN } from "@/util/data";
 import { useEffect } from "react";
@@ -87,7 +89,9 @@ export default function UserPage({
               : limitedInStockItems
           }
         />
-        {isMobile && <MobileBottomNav />}
+        {isMobile && (
+          <MobileBottomNav isActiveIndex={getButtomNavItemIndex("Home")} />
+        )}
         <Footer />
       </main>
     </>

@@ -10,7 +10,7 @@ import account from "@/assets/category-icons/account.svg";
 import dropDownArrow from "@/assets/category-icons/drop down arrow.svg";
 import styles from "./user-nav.module.scss";
 import { useRouter } from "next/router";
-import DesktopDropDown from "@/components/desktop-drop-down/desktop-drop-down";
+import DesktopDropDown from "@/layouts/desktop-drop-down/desktop-drop-down";
 
 export default function UserNav() {
   const [showDropDown, setShowDropDown] = useState<boolean>(false);

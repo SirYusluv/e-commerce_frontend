@@ -10,6 +10,11 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./order.module.scss";
+import MobileBottomNav, {
+  getButtomNavItemIndex,
+} from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
+import useResponsive from "@/hooks/use-responsive";
+import variables from "@/styles/variables.module.scss";
 
 export interface IItemsForOrder {
   _id: string;
@@ -33,6 +38,7 @@ export default function Order() {
   const [dialog, setDialog] = useState<JSX.Element | null>(null);
   const dispatch = useDispatch();
   const router = useRouter();
+  const isMobile = useResponsive(`(max-width: ${variables.widthMobile})`);
   const [sendRequest, _, isLoading, isError, errMsg, response] = useRequest();
 
   useEffect(() => {
@@ -137,6 +143,9 @@ export default function Order() {
               status={status}
             />
           )
+        )}
+        {isMobile && (
+          <MobileBottomNav isActiveIndex={getButtomNavItemIndex("Orders")} />
         )}
       </main>
     </>

@@ -1,0 +1,11 @@
+@import "@/styles/typography.scss";
+
+.account {
+  &__item {
+    @include body-one-bold;
+
+    margin: auto;
+    width: fit-content;
+    margin-top: 5rem;
+  }
+}
