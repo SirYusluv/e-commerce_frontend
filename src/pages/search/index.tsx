@@ -1,10 +1,9 @@
-import Item, { IItem, IItemFromDb } from "@/components/item/item";
+import Item, { IItemFromDb } from "@/components/item/item";
 import Pagination from "@/components/pagination/pagination";
 import useRequest from "@/hooks/use-http";
 import useResponsive from "@/hooks/use-responsive";
 import AlertDialog from "@/layouts/alert-dialog/alert-dialog";
 import Footer from "@/layouts/footer/footer";
-import MobileBottomNav from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 import UserNav from "@/layouts/nav/user-nav/user-nav";
 import { hideBackdrop } from "@/store/slices/backdrop-slice";
 import variables from "@/styles/variables.module.scss";
@@ -13,7 +12,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import dummyImage from "@/assets/bg-bag.png";
 import styles from "./search.module.scss";
 
 export default function Seaarch() {
@@ -154,8 +152,6 @@ export default function Seaarch() {
             />
           )}
         </main>
-
-        {isMobile && <MobileBottomNav />}
         <Footer />
       </div>
     </>

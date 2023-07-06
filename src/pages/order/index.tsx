@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import styles from "./order.module.scss";
 import MobileBottomNav, {
-  getButtomNavItemIndex,
+  getBottomNavItemIndex,
 } from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 import useResponsive from "@/hooks/use-responsive";
 import variables from "@/styles/variables.module.scss";
@@ -145,7 +145,7 @@ export default function Order() {
           )
         )}
         {isMobile && (
-          <MobileBottomNav isActiveIndex={getButtomNavItemIndex("Orders")} />
+          <MobileBottomNav isActiveIndex={getBottomNavItemIndex("Orders")} />
         )}
       </main>
     </>

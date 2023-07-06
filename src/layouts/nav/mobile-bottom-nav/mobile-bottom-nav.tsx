@@ -32,7 +32,7 @@ export const bottomNavItems: IBottomNavItem[] = [
   },
 ];
 
-export function getButtomNavItemIndex(item: ButtomNavItemText) {
+export function getBottomNavItemIndex(item: ButtomNavItemText) {
   const ind = bottomNavItems.findIndex((navText) => navText.text === item);
   return ind === -1 ? 1 : ind;
 }

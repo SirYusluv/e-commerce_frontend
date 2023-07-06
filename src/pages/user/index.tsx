@@ -9,7 +9,7 @@ import useResponsive from "@/hooks/use-responsive";
 import LimitedInStock from "@/layouts/discover-page-sections/limited-in-stock/limited-in-stock";
 import Footer from "@/layouts/footer/footer";
 import MobileBottomNav, {
-  getButtomNavItemIndex,
+  getBottomNavItemIndex,
 } from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 import Head from "next/head";
 import { ACCESS_TOKEN, API_URL, SAMPLE_TOKEN } from "@/util/data";
@@ -90,7 +90,7 @@ export default function UserPage({
           }
         />
         {isMobile && (
-          <MobileBottomNav isActiveIndex={getButtomNavItemIndex("Home")} />
+          <MobileBottomNav isActiveIndex={getBottomNavItemIndex("Home")} />
         )}
         <Footer />
       </main>

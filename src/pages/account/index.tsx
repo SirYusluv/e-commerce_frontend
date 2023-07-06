@@ -1,5 +1,5 @@
 import MobileBottomNav, {
-  getButtomNavItemIndex,
+  getBottomNavItemIndex,
 } from "@/layouts/nav/mobile-bottom-nav/mobile-bottom-nav";
 import styles from "./account.module.scss";
 import useResponsive from "@/hooks/use-responsive";
@@ -22,7 +22,7 @@ export default function Account() {
         Logout
       </div>
       {isMobile && (
-        <MobileBottomNav isActiveIndex={getButtomNavItemIndex("Account")} />
+        <MobileBottomNav isActiveIndex={getBottomNavItemIndex("Account")} />
       )}
     </>
   );
